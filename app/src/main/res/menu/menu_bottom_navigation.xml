@@ -2,27 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/dialogsFragment"
+        android:id="@+id/menu_dialogsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@null"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/groupFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="@null"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/applicationFragment"
+        android:id="@+id/menu_groupFragment"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@null"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/menu_applicationFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@null"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_profileFragment"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@null"
