@@ -16,4 +16,6 @@ abstract class BaseFragment : Fragment() {
         super.onDestroyView()
     }
 
+    open fun onBackPressed(): Boolean = false
+
 }
