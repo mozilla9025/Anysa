@@ -25,6 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             resValue("string", "app_name", "Anysa")
             pseudoLocalesEnabled false
+            buildConfigField("String", "BASE_URL", "\"http://47.88.231.69:8080\"")
         }
         debug {
             applicationIdSuffix ".debug"
@@ -33,6 +34,7 @@ android {
             resValue("string", "app_name", "Anysa DEBUG")
             pseudoLocalesEnabled false
             versionNameSuffix '.debug'
+            buildConfigField("String", "BASE_URL", "\"http://47.88.231.69:8080\"")
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
