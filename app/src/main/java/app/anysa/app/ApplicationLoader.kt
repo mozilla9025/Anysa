@@ -1,6 +1,7 @@
 package app.anysa.app
 
 import androidx.multidex.MultiDexApplication
+import app.anysa.di.*
 
 class ApplicationLoader : MultiDexApplication() {
 
@@ -9,16 +10,16 @@ class ApplicationLoader : MultiDexApplication() {
 
         instance = this
 
-//        applicationComponent = DaggerApplicationComponent.builder()
-//                .appModule(AppModule(this))
-//                .networkModule(NetworkModule())
-//                .apiModule(ApiModule())
-//                .apiControllerModule(ApiControllerModule())
-//                .build()
+        applicationComponent = DaggerApplicationComponent.builder()
+                .appModule(AppModule(this))
+                .networkModule(NetworkModule())
+                .apiModule(ApiModule())
+                .apiControllersModule(ApiControllersModule())
+                .build()
     }
 
     companion object {
         lateinit var instance: ApplicationLoader
-//        lateinit var applicationComponent: ApplicationComponent
+        lateinit var applicationComponent: ApplicationComponent
     }
 }

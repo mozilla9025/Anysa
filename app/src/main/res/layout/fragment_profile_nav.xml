@@ -9,8 +9,8 @@
     <fragment
         android:id="@+id/main_fragment_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="@dimen/dp_0"
-        android:layout_height="@dimen/dp_0"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="@dimen/dp0"
         app:navGraph="@navigation/nav_profile"
         app:defaultNavHost="false"
         app:layout_constraintBottom_toBottomOf="parent"
