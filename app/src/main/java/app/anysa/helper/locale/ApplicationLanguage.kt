@@ -2,7 +2,7 @@ package app.anysa.helper.locale
 
 import app.anysa.R
 
-enum class ApplicationLanguage private constructor(val languageCode: String, val languageRes: Int, private val isDefault: Boolean = false) {
+enum class ApplicationLanguage(val languageCode: String, val languageRes: Int, private val isDefault: Boolean = false) {
 
     EN("en", R.string.application_language_english),
     CN("cn", R.string.application_language_russian, true);

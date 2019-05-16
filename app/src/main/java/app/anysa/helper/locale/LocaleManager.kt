@@ -17,9 +17,12 @@ class LocaleManager {
             return if (!TextUtils.isEmpty(language)) updateResources(c, language!!) else c
         }
 
-        fun setNewLocale(c: Context, language: String): Context {
+        fun setNewLocale(c: Context, language: String): Boolean {
+            if (language == getLanguage(c)) return false
             persistLanguage(language)
-            return updateResources(c, language)
+            updateResources(c, language)
+
+            return true
         }
 
         @SuppressLint("ApplySharedPref")

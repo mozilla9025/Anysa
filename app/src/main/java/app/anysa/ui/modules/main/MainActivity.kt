@@ -36,6 +36,9 @@ class MainActivity : BaseActivity() {
                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
                     Intent.FLAG_ACTIVITY_SINGLE_TOP
 
+            if (from is MainActivity)
+                from.finish()
+
             from.startActivity(intent)
         }
     }
