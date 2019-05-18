@@ -10,11 +10,15 @@
 
     <color name="white">#FFFFFF</color>
     <color name="textColor">#6b6b6b</color>
+    <color name="textColorHint">#bcbcbc</color>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="btnGradientEnd">#DB0269</color>
     <color name="btnGradientStart">#fc3a41</color>
     <color name="shape_btn_sign_up">#ff5a60</color>
+
+    <color name="grey">#bbbbbb</color>
+    <color name="red">#ff0000</color>
 
 
 </resources>

@@ -29,12 +29,6 @@ class StartFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        view_language_select.onLanguageSelectedCallback = object : OnLanguageSelectedCallback {
-            override fun onLanguageChanged() {
-                context?.let { MainActivity.start(it) }
-            }
-        }
-
         val text = Html.fromHtml("<u><a href=${Constants.PRIVACY_POLICY_URL}>${getString(R.string.start_fragment_privacy_policy)}</a></u>")
         tv_privacy_policy.text = text
         tv_privacy_policy.movementMethod = LinkMovementMethod.getInstance()
