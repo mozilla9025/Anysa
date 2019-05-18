@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.view_register_form_input.view.*
 class RegisterFormInputView : ConstraintLayout {
 
     companion object {
-        val TYPE_TEXT = 0
-        val TYPE_PHONE = 1
-        val TYPE_PASSWORD = 2
+        const val TYPE_TEXT = 0
+        const val TYPE_PHONE = 1
+        const val TYPE_PASSWORD = 2
     }
 
     @JvmOverloads
@@ -75,7 +75,6 @@ class RegisterFormInputView : ConstraintLayout {
                 }
                 TYPE_PHONE -> {
                     text_input_layout.isPasswordVisibilityToggleEnabled = true
-                    edit_text.inputType = InputType.TYPE_CLASS_PHONE
                     edit_text.addTextChangedListener(PhoneNumberFormattingTextWatcher(ApplicationLanguage.CN.languageCode))
                 }
             }

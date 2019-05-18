@@ -10,6 +10,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="textColor">#6b6b6b</color>
+    <color name="textColorDark">#505050</color>
     <color name="textColorHint">#bcbcbc</color>
 
     <color name="transparent">#00FFFFFF</color>

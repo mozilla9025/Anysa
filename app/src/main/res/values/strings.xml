@@ -4,5 +4,19 @@
     <string name="start_fragment_privacy_policy">Privacy policy</string>
     <string name="start_fragment_label_language">Language</string>
     <string name="application_language_english">English</string>
-    <string name="application_language_russian">Chinees</string>
+    <string name="application_language_russian">Chines</string>
+    <string name="register_fragment_btn_show_advanced_data">Show advanced data</string>
+    <string name="register_fragment_btn_hide_advanced_data">Hide advanced data</string>
+    <string name="register_fragment_button_sign_up">Sign up</string>
+    <string name="register_fragment_label_phone_number">Phone number</string>
+    <string name="register_fragment_label_password">Password</string>
+    <string name="register_fragment_label_full_name">Full Name</string>
+    <string name="register_fragment_label_email">Email</string>
+    <string name="register_fragment_label_about_yourself">About yourself</string>
+    <string name="register_fragment_label_have_an_account">Have an account?</string>
+    <string name="register_fragment_btn_sign_in">Sign in</string>
+    <string name="register_fragment_hint_enter_password">Enter Your Password</string>
+    <string name="register_fragment_hint_enter_full_name">Enter Your Full Name</string>
+    <string name="register_fragment_hint_enter_email">Enter Your Email</string>
+    <string name="register_fragment_hint_enter_about_yourself">City, Occupation, Hobbies..</string>
 </resources>
