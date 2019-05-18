@@ -20,47 +20,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout"
-        android:layout_width="@dimen/dp0"
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:hintEnabled="false"
         android:layout_marginTop="@dimen/dp6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:hintEnabled="false">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_register_form_input_view"
+                android:fontFamily="@font/helvetica_neue"
+                android:paddingStart="@dimen/dp24"
+                android:paddingTop="@dimen/dp10"
+                android:paddingEnd="@dimen/dp24"
+                android:paddingBottom="@dimen/dp10"
+                android:textColorHint="@color/textColorHint"
+                android:textSize="@dimen/sp16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edit_text"
+            android:id="@+id/edit_text_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_register_form_input_view"
-            android:inputType="textPassword"
+            android:digits="+0123456789"
             android:fontFamily="@font/helvetica_neue"
+            android:inputType="phone"
             android:paddingStart="@dimen/dp24"
             android:paddingTop="@dimen/dp10"
             android:paddingEnd="@dimen/dp24"
             android:paddingBottom="@dimen/dp10"
             android:textColorHint="@color/textColorHint"
-            android:textSize="@dimen/sp16" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="@dimen/sp16"
+            android:visibility="gone" />
+    </FrameLayout>
 
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_error"
-        android:layout_width="0dp"
-        android:visibility="gone"
+        android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp24"
+        android:layout_marginTop="@dimen/dp6"
         android:layout_marginEnd="@dimen/dp24"
         android:ellipsize="end"
         android:fontFamily="@font/helvetica_neue_light"
-        android:textColor="@color/red"
-        android:layout_marginTop="@dimen/dp6"
-        android:textSize="@dimen/sp16"
         android:maxLines="2"
+        android:textColor="@color/red"
+        android:textSize="@dimen/sp16"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout" />
+        app:layout_constraintTop_toBottomOf="@id/fl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

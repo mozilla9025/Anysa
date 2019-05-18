@@ -1,17 +1,17 @@
 package app.anysa.ui.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.Editable
-import android.text.InputType
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.text.*
+import android.text.method.DigitsKeyListener
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.anysa.R
 import app.anysa.helper.locale.ApplicationLanguage
 import kotlinx.android.synthetic.main.view_register_form_input.view.*
+import java.text.DecimalFormatSymbols
 
 
 class RegisterFormInputView : ConstraintLayout {
@@ -20,6 +20,7 @@ class RegisterFormInputView : ConstraintLayout {
         const val TYPE_TEXT = 0
         const val TYPE_PHONE = 1
         const val TYPE_PASSWORD = 2
+        const val TYPE_EMAIL = 3
     }
 
     @JvmOverloads
@@ -30,6 +31,7 @@ class RegisterFormInputView : ConstraintLayout {
         initListeners()
         attributes?.let { handleAttrs(context, attributes, defStyleAttr) }
     }
+
     var text: String
         get() = edit_text.text.toString()
         set(text) = edit_text.setText(text)
@@ -65,17 +67,46 @@ class RegisterFormInputView : ConstraintLayout {
             edit_text.setText(text)
             edit_text.hint = hint
             edit_text.maxLines = maxLines
+            edit_text_phone.hint = hint
 
             when (type) {
                 TYPE_TEXT -> {
+                    text_input_layout.visibility = View.VISIBLE
+                    edit_text_phone.visibility = View.GONE
+
+                    edit_text.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                 }
                 TYPE_PASSWORD -> {
-                    text_input_layout.isPasswordVisibilityToggleEnabled = true
+                    text_input_layout.visibility = View.VISIBLE
+                    edit_text_phone.visibility = View.GONE
+
                     edit_text.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
                 }
                 TYPE_PHONE -> {
-                    text_input_layout.isPasswordVisibilityToggleEnabled = true
-                    edit_text.addTextChangedListener(PhoneNumberFormattingTextWatcher(ApplicationLanguage.CN.languageCode))
+                    text_input_layout.visibility = View.GONE
+                    edit_text_phone.visibility = View.VISIBLE
+
+                    edit_text_phone.inputType = InputType.TYPE_CLASS_PHONE
+                    edit_text_phone.addTextChangedListener(PhoneNumberFormattingTextWatcher(ApplicationLanguage.CN.languageCode))
+
+                    edit_text_phone.addTextChangedListener(object : TextWatcher{
+                        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                        }
+
+                        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                        }
+
+                        override fun afterTextChanged(s: Editable?) {
+
+                        }
+
+                    })
+                }
+                TYPE_EMAIL -> {
+                    text_input_layout.visibility = View.VISIBLE
+                    edit_text_phone.visibility = View.GONE
+
+                    edit_text.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 }
             }
         } finally {

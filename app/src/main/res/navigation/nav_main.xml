@@ -22,10 +22,18 @@
         android:id="@+id/startFragment"
         android:name="app.anysa.ui.modules.authorization.start.StartFragment"
         android:label="StartFragment"
-        tools:layout="@layout/fragment_start"/>
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="app.anysa.ui.modules.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="app.anysa.ui.modules.authorization.register.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

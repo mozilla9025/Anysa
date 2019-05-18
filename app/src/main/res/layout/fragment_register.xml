@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rfiv_hint="+86 000 000 0000"
         app:rfiv_title="@string/register_fragment_label_phone_number"
-        app:rfiv_type="text" />
+        app:rfiv_type="phone" />
 
     <app.anysa.ui.widget.RegisterFormInputView
         android:id="@+id/rfiv_password"
