@@ -44,5 +44,10 @@
     <style name="PrivacyPolicy"  parent="Widget.AppCompat.TextView">
         <item name="android:colorAccent">@color/textColor</item>
     </style>
+    <style name="AppTheme.RegistrationTitleAppearance"  parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/helvetica_neue_bold</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:textSize">@dimen/sp24</item>
+    </style>
 
 </resources>

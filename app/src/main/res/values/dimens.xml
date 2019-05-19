@@ -63,4 +63,10 @@
     <dimen name="dp86">86dp</dimen>
     <dimen name="dp15">15dp</dimen>
     <dimen name="dp26">26dp</dimen>
+    <dimen name="dp88">88dp</dimen>
+    <dimen name="dp53">53dp</dimen>
+    <dimen name="dp130">130dp</dimen>
+    <dimen name="dp160">160dp</dimen>
+    <dimen name="dp178">178dp</dimen>
+    <dimen name="dp188">188dp</dimen>
 </resources>
