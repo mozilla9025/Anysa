@@ -13,7 +13,9 @@ import app.anysa.helper.locale.OnLanguageSelectedCallback
 import app.anysa.helper.preferences.PreferencesManager
 import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.modules.main.MainActivity
+import app.anysa.ui.widget.expandable_layout.ExpandableLayout
 import app.anysa.util.extensions.logd
+import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_start.*
 
 class RegisterFragment : BaseFragment() {
@@ -28,5 +30,19 @@ class RegisterFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        el_advanced_data.setOnExpansionUpdateListener { expansionFraction, state ->
+            when (state) {
+                ExpandableLayout.State.COLLAPSED -> {
+                    tv_advanced_data.setText(R.string.register_fragment_btn_show_advanced_data)
+                }
+                ExpandableLayout.State.EXPANDED -> {
+                    tv_advanced_data.setText(R.string.register_fragment_btn_hide_advanced_data)
+                }
+            }
+        }
+        tv_advanced_data.setOnClickListener({
+            el_advanced_data.toggle(false)
+        })
     }
 }

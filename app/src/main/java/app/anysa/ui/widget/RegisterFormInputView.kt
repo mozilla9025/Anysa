@@ -89,17 +89,39 @@ class RegisterFormInputView : ConstraintLayout {
                     edit_text_phone.inputType = InputType.TYPE_CLASS_PHONE
                     edit_text_phone.addTextChangedListener(PhoneNumberFormattingTextWatcher(ApplicationLanguage.CN.languageCode))
 
-                    edit_text_phone.addTextChangedListener(object : TextWatcher{
+                    edit_text_phone.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                         }
 
                         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
                         }
 
+                        @SuppressLint("SetTextI18n")
                         override fun afterTextChanged(s: Editable?) {
+                            val text = edit_text_phone.text ?: return
 
+                            if (text.isEmpty() or text.startsWith("+86")) return
+
+                            if (text.startsWith("+")) {
+                                if (text.startsWith("+8")) {
+                                    if (!text.startsWith("+86") && text.length > 2) {
+                                        edit_text_phone.setText("+86${text.substring(2, text.length)}")
+                                    }
+                                } else {
+                                    if (text.length > 1) {
+                                        edit_text_phone.setText("+8${text.substring(1, text.length)}")
+                                    }
+                                }
+                            } else {
+                                if (text.startsWith("86") || text.startsWith("8")) {
+                                    edit_text_phone.setText("+$text")
+                                } else {
+                                    edit_text_phone.setText("+86$text")
+                                }
+                            }
+                            edit_text_phone.setSelection(edit_text_phone.text!!.length)
                         }
-
                     })
                 }
                 TYPE_EMAIL -> {
