@@ -24,10 +24,10 @@
             app:collapsedTitleTextAppearance="@style/AppTheme.RegistrationTitleAppearance"
             app:contentScrim="@color/transparent"
             app:expandedTitleGravity="center|bottom"
-            app:expandedTitleMarginBottom="@dimen/dp38"
+            app:expandedTitleMarginBottom="@dimen/dp34"
             app:expandedTitleTextAppearance="@style/AppTheme.RegistrationTitleAppearance"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Create New Account"
+            app:title="@string/register_fragment_title"
             app:titleEnabled="true">
 
 
@@ -60,68 +60,25 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <!--<com.google.android.material.appbar.AppBarLayout-->
-    <!--android:id="@+id/app_bar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="200dp">-->
-
-    <!--<com.google.android.material.appbar.CollapsingToolbarLayout-->
-    <!--android:id="@+id/collapsing_toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--app:collapsedTitleGravity="center"-->
-    <!--app:contentScrim="?attr/colorPrimary"-->
-    <!--app:expandedTitleGravity="center|bottom"-->
-    <!--app:layout_scrollFlags="exitUntilCollapsed"-->
-    <!--app:title="Welcome back"-->
-    <!--app:titleEnabled="true">-->
-
-    <!--<androidx.appcompat.widget.Toolbar-->
-    <!--android:id="@+id/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="88dp"-->
-    <!--android:background="?attr/colorPrimary"-->
-    <!--app:layout_scrollFlags="scroll|enterAlways"/>-->
-
-    <!--<ImageView-->
-    <!--android:id="@+id/backdrop"-->
-    <!--android:layout_width="@dimen/dp28"-->
-    <!--android:layout_height="@dimen/dp28"-->
-    <!--android:padding="@dimen/dp4"-->
-    <!--android:layout_marginStart="@dimen/dp34"-->
-    <!--android:layout_marginTop="@dimen/dp30"-->
-    <!--android:layout_marginBottom="@dimen/dp30"-->
-    <!--android:scaleType="centerCrop"-->
-    <!--android:src="@drawable/ic_arrowback"-->
-    <!--android:tint="@color/textColor"-->
-    <!--app:layout_collapseMode="pin"-->
-    <!--/>-->
-    <!--</com.google.android.material.appbar.CollapsingToolbarLayout>-->
-    <!--</com.google.android.material.appbar.AppBarLayout>-->
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/app_bar"
         android:fillViewport="true"
         android:overScrollMode="never"
-        app:layout_anchorGravity="top|start"
+        android:layout_gravity="fill_vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="match_parent">
 
             <app.anysa.ui.widget.RegisterFormInputView
                 android:id="@+id/rfiv_phone"
                 android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp58"
+                android:layout_marginTop="@dimen/dp4"
                 android:layout_marginEnd="@dimen/dp58"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -237,6 +194,7 @@
                 android:layout_marginBottom="@dimen/dp30"
                 android:text="@string/register_fragment_button_sign_up"
                 app:layout_constraintBottom_toTopOf="@id/cl_footer"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_advanced_data"
@@ -247,7 +205,7 @@
                 android:id="@+id/cl_footer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/dp178"
+                android:layout_marginBottom="@dimen/dp18"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">

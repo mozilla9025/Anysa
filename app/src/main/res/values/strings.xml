@@ -19,4 +19,5 @@
     <string name="register_fragment_hint_enter_full_name">Enter Your Full Name</string>
     <string name="register_fragment_hint_enter_email">Enter Your Email</string>
     <string name="register_fragment_hint_enter_about_yourself">City, Occupation, Hobbies..</string>
+    <string name="register_fragment_title">Create New Account</string>
 </resources>
