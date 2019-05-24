@@ -62,6 +62,7 @@
                 android:fontFamily="@font/helvetica_neue"
                 android:paddingStart="@dimen/dp24"
                 android:paddingTop="@dimen/dp10"
+                android:inputType="textPassword"
                 android:paddingEnd="@dimen/dp24"
                 android:paddingBottom="@dimen/dp10"
                 android:textColorHint="@color/textColorHint"

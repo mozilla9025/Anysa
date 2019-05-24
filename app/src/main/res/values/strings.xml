@@ -28,4 +28,14 @@
     <string name="login_fragment_label_new_to_anysa">New to Anysa?</string>
     <string name="login_fragment_label_new_to_anysa_sign_up">Sign up</string>
     <string name="register_form_optional">(optional)</string>
+    <string name="error_field_is_empty">Field is empty</string>
+    <string name="error_ivalid_email_format">Invalid email format</string>
+    <string name="error_name_too_short">Name is too short</string>
+    <string name="error_name_too_long">Name is too long</string>
+    <string name="error_password_must_be_at_least_characters_long">Password must be at least 8 characters long</string>
+    <string name="error_password_must_contain_one_number">Password must contain at least 1 number</string>
+    <string name="error_password_must_contain_at_least_1_lower">Password must contain at least 1 lower case letter</string>
+    <string name="error_password_must_contain_at_least_1_upper">Password must contain at least 1 upper case letter</string>
+    <string name="error_invalid_phone_number">Invalid phone number format</string>
+    <string name="error_bio_too_long">Bio is too long</string>
 </resources>

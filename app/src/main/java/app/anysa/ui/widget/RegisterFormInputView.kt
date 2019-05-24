@@ -3,15 +3,16 @@ package app.anysa.ui.widget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.*
-import android.text.method.DigitsKeyListener
+import android.text.Editable
+import android.text.InputType
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.anysa.R
 import app.anysa.helper.locale.ApplicationLanguage
 import kotlinx.android.synthetic.main.view_register_form_input.view.*
-import java.text.DecimalFormatSymbols
 
 
 class RegisterFormInputView : ConstraintLayout {
@@ -69,7 +70,7 @@ class RegisterFormInputView : ConstraintLayout {
             edit_text.hint = hint
             edit_text.maxLines = maxLines
             edit_text_phone.hint = hint
-            tv_optional.visibility = if(isOptional) VISIBLE else GONE
+            tv_optional.visibility = if (isOptional) VISIBLE else GONE
 
             when (type) {
                 TYPE_TEXT -> {
@@ -81,8 +82,6 @@ class RegisterFormInputView : ConstraintLayout {
                 TYPE_PASSWORD -> {
                     text_input_layout.visibility = View.VISIBLE
                     edit_text_phone.visibility = View.GONE
-
-                    edit_text.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
                 }
                 TYPE_PHONE -> {
                     text_input_layout.visibility = View.GONE
@@ -123,6 +122,7 @@ class RegisterFormInputView : ConstraintLayout {
                                 }
                             }
                             edit_text_phone.setSelection(edit_text_phone.text!!.length)
+                            setError(null)
                         }
                     })
                 }
@@ -130,7 +130,8 @@ class RegisterFormInputView : ConstraintLayout {
                     text_input_layout.visibility = View.VISIBLE
                     edit_text_phone.visibility = View.GONE
 
-                    edit_text.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    edit_text.inputType = InputType.TYPE_CLASS_TEXT or
+                            InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 }
             }
         } finally {
@@ -144,6 +145,8 @@ class RegisterFormInputView : ConstraintLayout {
                 tv_error.visibility = View.VISIBLE
             if (!edit_text.isSelected)
                 edit_text.isSelected = true
+            if (!edit_text_phone.isSelected)
+                edit_text_phone.isSelected = true
 
             tv_error.text = errorText
         } else {
@@ -152,6 +155,8 @@ class RegisterFormInputView : ConstraintLayout {
                 tv_error.visibility = View.GONE
             if (edit_text.isSelected)
                 edit_text.isSelected = false
+            if (edit_text_phone.isSelected)
+                edit_text_phone.isSelected = false
         }
     }
 }

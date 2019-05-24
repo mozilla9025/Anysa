@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
+import app.anysa.helper.CheckHelper
 import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.widget.expandable_layout.ExpandableLayout
 import app.anysa.util.app_bar.AppBarStateChangeListener
@@ -53,11 +55,14 @@ class RegisterFragment : BaseFragment() {
             }
         })
 
-
-        tv_sign_in.setOnClickListener({
+        tv_sign_in.setOnClickListener {
             NavigationUtils.navigate(view,
                     RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
-        })
+        }
+
+        btn_sign_up.setOnClickListener {
+            checkFieldsAndSignUp()
+        }
     }
 
     private fun collapse() {
@@ -78,6 +83,47 @@ class RegisterFragment : BaseFragment() {
         toolbar_layout.layoutParams = p
 
         cl_footer.visibility = View.GONE
+    }
+
+    private fun checkFieldsAndSignUp() {
+        val checkHelper = CheckHelper(context)
+
+        var isError = false
+        var needToExpand = false
+
+        val phoneNumberValid = checkHelper.isPhoneNumberValid(rfiv_phone.text)
+        if (!phoneNumberValid.isValid) {
+            rfiv_phone.setError(phoneNumberValid.errorMessage)
+            isError = true
+        }
+        val passwordValid = checkHelper.isPasswordValid(rfiv_password.text)
+        if (!phoneNumberValid.isValid) {
+            rfiv_password.setError(passwordValid.errorMessage)
+            isError = true
+        }
+        val nameValid = checkHelper.isNameValid(rfiv_full_name.text)
+        if (!phoneNumberValid.isValid) {
+            rfiv_full_name.setError(nameValid.errorMessage)
+            isError = true
+            needToExpand = true
+        }
+        val emailValid = checkHelper.checkEmailValid(rfiv_email.text)
+        if (!emailValid.isValid) {
+            rfiv_email.setError(emailValid.errorMessage)
+            isError = true
+            needToExpand = true
+        }
+        val bioValid = checkHelper.isBioValid(rfiv_bio.text)
+        if (!bioValid.isValid) {
+            rfiv_bio.setError(bioValid.errorMessage)
+            isError = true
+            needToExpand = true
+        }
+
+        if (needToExpand) el_advanced_data.expand(false)
+        if (isError) return
+
+        Toast.makeText(context, "OK", Toast.LENGTH_LONG).show()
     }
 
 }
