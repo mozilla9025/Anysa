@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
 import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.widget.expandable_layout.ExpandableLayout
+import app.anysa.util.AppBarStateChangeListener
 import app.anysa.util.extensions.logd
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -30,38 +32,49 @@ class RegisterFragment : BaseFragment() {
         el_advanced_data.setOnExpansionUpdateListener { expansionFraction, state ->
             when (state) {
                 ExpandableLayout.State.COLLAPSED -> {
-                    tv_advanced_data.setText(R.string.register_fragment_btn_show_advanced_data)
-
-                    app_bar.setExpanded(true, false)
-                    val p = toolbar_layout.layoutParams as AppBarLayout.LayoutParams
-                    p.scrollFlags = 0
-                    toolbar_layout.layoutParams = p
+                    collapse()
                 }
                 ExpandableLayout.State.EXPANDED -> {
-                    tv_advanced_data.setText(R.string.register_fragment_btn_hide_advanced_data)
-                    val p = toolbar_layout.layoutParams as AppBarLayout.LayoutParams
-                    p.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
-                    toolbar_layout.layoutParams = p
+                    expand()
                 }
             }
         }
+
+        collapse()
+
         tv_advanced_data.setOnClickListener {
             el_advanced_data.toggle(false)
         }
 
-        app_bar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            updateFooterPadding(verticalOffset)
+        app_bar.addOnOffsetChangedListener(object : AppBarStateChangeListener() {
+            override fun onStateChanged(appBarLayout: AppBarLayout, state: State) {
+                when (state) {
+                    State.COLLAPSED -> view_appbar_shadow.visibility = View.VISIBLE
+                    else -> view_appbar_shadow.visibility = View.GONE
+                }
+            }
+
         })
     }
 
-    private fun updateFooterPadding(verticalOffset: Int) {
-        val tbHeight = toolbar.height
-        val maxOffset = app_bar.height - tbHeight
-        val percent = verticalOffset * 100 / maxOffset
-        val paddingBottom = tbHeight - abs(tbHeight * percent / 100)
-        cl_footer.setPadding(cl_footer.paddingLeft, cl_footer.paddingTop, cl_footer.paddingRight, paddingBottom)
+    private fun collapse() {
+        tv_advanced_data.setText(R.string.register_fragment_btn_show_advanced_data)
 
-        logd("onOffsetChanged: $verticalOffset  ${app_bar.height}  $tbHeight ${cl_footer.paddingBottom}  $paddingBottom");
+        app_bar.setExpanded(true, false)
+        val p = toolbar_layout.layoutParams as AppBarLayout.LayoutParams
+        p.scrollFlags = 0
+        toolbar_layout.layoutParams = p
 
+        cl_footer.visibility = View.VISIBLE
     }
+
+    private fun expand() {
+        tv_advanced_data.setText(R.string.register_fragment_btn_hide_advanced_data)
+        val p = toolbar_layout.layoutParams as AppBarLayout.LayoutParams
+        p.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+        toolbar_layout.layoutParams = p
+
+        cl_footer.visibility = View.GONE
+    }
+
 }

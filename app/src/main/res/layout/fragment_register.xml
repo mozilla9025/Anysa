@@ -60,47 +60,15 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <!--<com.google.android.material.appbar.AppBarLayout-->
-    <!--android:id="@+id/app_bar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="200dp">-->
-
-    <!--<com.google.android.material.appbar.CollapsingToolbarLayout-->
-    <!--android:id="@+id/collapsing_toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--app:collapsedTitleGravity="center"-->
-    <!--app:contentScrim="?attr/colorPrimary"-->
-    <!--app:expandedTitleGravity="center|bottom"-->
-    <!--app:layout_scrollFlags="exitUntilCollapsed"-->
-    <!--app:title="Welcome back"-->
-    <!--app:titleEnabled="true">-->
-
-    <!--<androidx.appcompat.widget.Toolbar-->
-    <!--android:id="@+id/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="88dp"-->
-    <!--android:background="?attr/colorPrimary"-->
-    <!--app:layout_scrollFlags="scroll|enterAlways"/>-->
-
-    <!--<ImageView-->
-    <!--android:id="@+id/backdrop"-->
-    <!--android:layout_width="@dimen/dp28"-->
-    <!--android:layout_height="@dimen/dp28"-->
-    <!--android:padding="@dimen/dp4"-->
-    <!--android:layout_marginStart="@dimen/dp34"-->
-    <!--android:layout_marginTop="@dimen/dp30"-->
-    <!--android:layout_marginBottom="@dimen/dp30"-->
-    <!--android:scaleType="centerCrop"-->
-    <!--android:src="@drawable/ic_arrowback"-->
-    <!--android:tint="@color/textColor"-->
-    <!--app:layout_collapseMode="pin"-->
-    <!--/>-->
-    <!--</com.google.android.material.appbar.CollapsingToolbarLayout>-->
-    <!--</com.google.android.material.appbar.AppBarLayout>-->
-
+    <View
+        android:id="@+id/view_appbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp6"
+        android:layout_below="@id/app_bar"
+        android:background="@drawable/shape_app_bar_shadow"
+        android:visibility="gone"
+        app:layout_anchorGravity="bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -247,7 +215,7 @@
                 android:id="@+id/cl_footer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/dp178"
+                android:layout_marginBottom="@dimen/dp18"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">

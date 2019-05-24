@@ -14,6 +14,7 @@
     <color name="textColorHint">#bcbcbc</color>
 
     <color name="transparent">#00FFFFFF</color>
+    <color name="transparentGrey">#80DBDBDB</color>
     <color name="btnGradientEnd">#DB0269</color>
     <color name="btnGradientStart">#fc3a41</color>
     <color name="shape_btn_sign_up">#ff5a60</color>
