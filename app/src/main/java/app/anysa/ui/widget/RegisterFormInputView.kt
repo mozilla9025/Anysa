@@ -62,12 +62,14 @@ class RegisterFormInputView : ConstraintLayout {
             val title = a.getString(R.styleable.RegisterFormInputView_rfiv_title)
             val type = a.getInteger(R.styleable.RegisterFormInputView_rfiv_type, TYPE_TEXT)
             val maxLines = a.getInteger(R.styleable.RegisterFormInputView_rfiv_maxLines, 1)
+            val isOptional = a.getBoolean(R.styleable.RegisterFormInputView_rfiv_isOptional, false)
 
             tv_title.text = title
             edit_text.setText(text)
             edit_text.hint = hint
             edit_text.maxLines = maxLines
             edit_text_phone.hint = hint
+            tv_optional.visibility = if(isOptional) VISIBLE else GONE
 
             when (type) {
                 TYPE_TEXT -> {

@@ -34,7 +34,11 @@ class StartFragment : BaseFragment() {
         tv_privacy_policy.text = text
         tv_privacy_policy.movementMethod = LinkMovementMethod.getInstance()
 
+        btn_sign_in.setOnClickListener {
+            NavigationUtils.navigate(view, R.id.action_startFragment_to_loginFragment)
+        }
         btn_sign_up.setOnClickListener {
-            NavigationUtils.navigate(view, R.id.action_startFragment_to_registerFragment) }
+            NavigationUtils.navigate(view, R.id.action_startFragment_to_registerFragment)
+        }
     }
 }

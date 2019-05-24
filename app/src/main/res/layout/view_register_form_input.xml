@@ -9,16 +9,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp24"
-        android:layout_marginEnd="@dimen/dp24"
         android:ellipsize="end"
         android:fontFamily="@font/helvetica_neue_light"
         android:text="Phone number"
         android:textColor="@color/textColorDark"
         android:textSize="@dimen/sp16"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/tv_optional"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_optional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp24"
+        android:ellipsize="end"
+        android:visibility="gone"
+        android:fontFamily="@font/helvetica_neue_italic"
+        android:text="@string/register_form_optional"
+        android:textColor="@color/textColorDark"
+        android:textSize="@dimen/sp14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/tv_title"
+        app:layout_constraintTop_toTopOf="@id/tv_title"/>
 
     <FrameLayout
         android:id="@+id/fl"

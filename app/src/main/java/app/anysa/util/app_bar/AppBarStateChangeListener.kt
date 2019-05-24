@@ -1,4 +1,4 @@
-package app.anysa.util
+package app.anysa.util.app_bar
 
 import com.google.android.material.appbar.AppBarLayout
 

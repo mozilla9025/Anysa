@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
 import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.widget.expandable_layout.ExpandableLayout
-import app.anysa.util.AppBarStateChangeListener
-import app.anysa.util.extensions.logd
+import app.anysa.util.app_bar.AppBarStateChangeListener
+import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
-import kotlin.math.abs
 
 
 class RegisterFragment : BaseFragment() {
@@ -53,7 +51,12 @@ class RegisterFragment : BaseFragment() {
                     else -> view_appbar_shadow.visibility = View.GONE
                 }
             }
+        })
 
+
+        tv_sign_in.setOnClickListener({
+            NavigationUtils.navigate(view,
+                    RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
         })
     }
 
