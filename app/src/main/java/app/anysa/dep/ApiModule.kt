@@ -1,4 +1,4 @@
-package app.anysa.di
+package app.wallpaper.di
 
 import app.anysa.network.api.AuthApi
 import dagger.Module
@@ -9,5 +9,8 @@ import retrofit2.Retrofit
 class ApiModule {
 
     @Provides
-    fun provideAuthApi(retrofit: Retrofit): AuthApi = retrofit.create(AuthApi::class.java)
+    fun providePhotosApi(retrofit: Retrofit): AuthApi {
+        return retrofit.create(AuthApi::class.java)
+    }
+
 }

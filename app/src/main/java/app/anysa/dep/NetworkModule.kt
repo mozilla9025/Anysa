@@ -1,8 +1,7 @@
-package app.anysa.di
+package app.wallpaper.di
 
 import android.app.Application
 import app.anysa.BuildConfig
-import app.anysa.util.extensions.l
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -14,12 +13,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-open class NetworkModule {
+class NetworkModule {
 
     @Provides
     fun provideHttpCache(application: Application): Cache {
         val cacheSize = 10 * 1024 * 1024
-        return Cache(application.cacheDir, cacheSize.l)
+        return Cache(application.cacheDir, cacheSize.toLong())
     }
 
     @Provides
@@ -29,12 +28,13 @@ open class NetworkModule {
             .readTimeout(1, TimeUnit.MINUTES)
             .writeTimeout(1, TimeUnit.MINUTES)
 
+
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         client.addInterceptor(loggingInterceptor)
-        client.cache(cache)
 
+        client.cache(cache)
         return client.build()
     }
 
