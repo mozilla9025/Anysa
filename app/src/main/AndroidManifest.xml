@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.modules.main.MainActivity"
+            android:name=".ui.modules.MainActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait">
             <intent-filter>

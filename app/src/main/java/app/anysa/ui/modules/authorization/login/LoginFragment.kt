@@ -6,19 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
+import app.anysa.databinding.FragmentLoginBinding
 import app.anysa.ui.base.BaseFragment
+import app.anysa.ui.base.abs.AbsFragment
+import app.anysa.util.annotation.RequiresView
+import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.navigation.NavigationUtils
 import kotlinx.android.synthetic.main.fragment_login.*
 
+@RequiresViewModel(LoginViewModel::class)
+@RequiresView(R.layout.fragment_login)
+class LoginFragment : AbsFragment<LoginViewModel, FragmentLoginBinding>() {
 
-class LoginFragment : BaseFragment() {
+    override fun onBound(binding: FragmentLoginBinding?) {
+        super.onBound(binding)
 
-    private val viewModel: LoginViewModel by lazy {
-        ViewModelProviders.of(this).get(LoginViewModel::class.java)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

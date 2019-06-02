@@ -9,23 +9,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
 import app.anysa.app.Constants
-import app.anysa.helper.locale.OnLanguageSelectedCallback
-import app.anysa.helper.preferences.PreferencesManager
+import app.anysa.databinding.FragmentLoginBinding
+import app.anysa.databinding.FragmentStartBinding
 import app.anysa.ui.base.BaseFragment
-import app.anysa.ui.modules.main.MainActivity
-import app.anysa.util.extensions.logd
+import app.anysa.ui.base.abs.AbsFragment
+import app.anysa.ui.modules.authorization.login.LoginViewModel
+import app.anysa.util.annotation.RequiresView
+import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.navigation.NavigationUtils
 import kotlinx.android.synthetic.main.fragment_start.*
 
-class StartFragment : BaseFragment() {
-
-    private val viewModel: StartViewModel by lazy {
-        ViewModelProviders.of(this).get(StartViewModel::class.java)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_start, container, false)
-    }
+@RequiresViewModel(StartViewModel::class)
+@RequiresView(R.layout.fragment_start)
+class StartFragment : AbsFragment<StartViewModel, FragmentStartBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

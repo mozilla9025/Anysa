@@ -1,22 +1,17 @@
 package app.anysa.ui.modules.main
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
-import app.anysa.helper.preferences.PreferencesManager
-import app.anysa.ui.base.BaseFragment
+import app.anysa.databinding.FragmentMainBinding
+import app.anysa.ui.base.abs.AbsFragment
+import app.anysa.util.annotation.RequiresView
+import app.anysa.util.annotation.RequiresViewModel
 
-class MainFragment : BaseFragment() {
+@RequiresView(R.layout.fragment_main)
+@RequiresViewModel(MainViewModel::class)
+class MainFragment : AbsFragment<MainViewModel, FragmentMainBinding>() {
 
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProviders.of(this).get(MainViewModel::class.java)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//
+//        return inflater.inflate(R.layout.fragment_main, container, false)
+//    }
 }

@@ -9,8 +9,10 @@ import app.anysa.R
 import app.anysa.helper.preferences.PreferencesManager
 import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.base.BaseViewModel
+import app.anysa.ui.base.abs.AbsViewModel
+import javax.inject.Inject
 
-class LoginViewModel(app: Application) : BaseViewModel(app) {
+class LoginViewModel @Inject constructor() : AbsViewModel() {
 
 
 

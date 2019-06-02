@@ -9,9 +9,7 @@ import app.anysa.helper.dialog.DialogHelper
 import app.anysa.helper.dialog.DialogInteractorCallback
 import app.anysa.helper.locale.ApplicationLanguage
 import app.anysa.helper.locale.LocaleManager
-import app.anysa.helper.locale.OnLanguageSelectedCallback
-import app.anysa.ui.modules.authorization.start.StartFragment
-import app.anysa.ui.modules.main.MainActivity
+import app.anysa.ui.modules.MainActivity
 import app.anysa.util.extensions.logd
 import kotlinx.android.synthetic.main.view_language_selection.view.*
 

@@ -7,27 +7,26 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
+import app.anysa.databinding.FragmentLoginBinding
+import app.anysa.databinding.FragmentRegisterBinding
 import app.anysa.helper.CheckHelper
 import app.anysa.ui.base.BaseFragment
+import app.anysa.ui.base.abs.AbsFragment
+import app.anysa.ui.modules.authorization.login.LoginViewModel
 import app.anysa.ui.widget.expandable_layout.ExpandableLayout
+import app.anysa.util.annotation.RequiresView
+import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.app_bar.AppBarStateChangeListener
 import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
 
+@RequiresViewModel(RegisterViewModel::class)
+@RequiresView(R.layout.fragment_register)
+class RegisterFragment : AbsFragment<RegisterViewModel, FragmentRegisterBinding>() {
 
-class RegisterFragment : BaseFragment() {
-
-    private val viewModel: RegisterViewModel by lazy {
-        ViewModelProviders.of(this).get(RegisterViewModel::class.java)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_register, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onBound(binding: FragmentRegisterBinding?) {
+        super.onBound(binding)
 
         el_advanced_data.setOnExpansionUpdateListener { expansionFraction, state ->
             when (state) {
@@ -91,7 +90,7 @@ class RegisterFragment : BaseFragment() {
         var isError = false
         var needToExpand = false
 
-        val phoneNumberValid = checkHelper.isPhoneNumberValid(rfiv_phone.text)
+        val phoneNumberValid = checkHelper.isPhoneNumberValid(rfiv_phone.phone)
         if (!phoneNumberValid.isValid) {
             rfiv_phone.setError(phoneNumberValid.errorMessage)
             isError = true
@@ -123,7 +122,9 @@ class RegisterFragment : BaseFragment() {
         if (needToExpand) el_advanced_data.expand(false)
         if (isError) return
 
+
+        getViewModel()?.signUp(phoneNumberValid.formattedValue!!, passwordValid.formattedValue!!)
+
         Toast.makeText(context, "OK", Toast.LENGTH_LONG).show()
     }
-
 }

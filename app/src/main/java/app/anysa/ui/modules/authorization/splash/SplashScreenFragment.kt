@@ -19,10 +19,10 @@ class SplashScreenFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         logd("onresume")
-        if (PreferencesManager.token == null) {
+//        if (PreferencesManager.token == null) {
             NavigationUtils.navigate(view, R.id.action_splashScreenFragment_to_startFragment)
-        } else {
-            NavigationUtils.navigate(view, R.id.action_splashScreenFragment_to_mainFragment)
-        }
+//        } else {
+//            NavigationUtils.navigate(view, R.id.action_splashScreenFragment_to_mainFragment)
+//        }
     }
 }

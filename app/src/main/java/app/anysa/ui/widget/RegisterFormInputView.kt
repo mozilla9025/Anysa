@@ -37,6 +37,10 @@ class RegisterFormInputView : ConstraintLayout {
         get() = edit_text.text.toString()
         set(text) = edit_text.setText(text)
 
+    var phone: String
+        get() = edit_text_phone.text.toString()
+        set(text) = edit_text_phone.setText(text)
+
 
     private fun initListeners() {
         edit_text.addTextChangedListener(object : TextWatcher {
