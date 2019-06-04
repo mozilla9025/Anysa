@@ -3,8 +3,7 @@ package app.anysa.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.anysa.ui.modules.MainActivityViewModel
-import app.anysa.ui.modules.authorization.login.LoginViewModel
-import app.anysa.ui.modules.authorization.register.RegisterViewModel
+import app.anysa.ui.modules.authorization.AuthSharedViewModel
 import app.anysa.ui.modules.authorization.start.StartViewModel
 import app.anysa.ui.modules.main.MainViewModel
 import dagger.Binds
@@ -29,13 +28,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(RegisterViewModel::class)
-    internal abstract fun bindRegisterViewModel(viewModel: RegisterViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    internal abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+    @ViewModelKey(AuthSharedViewModel::class)
+    internal abstract fun bindAuthSharedViewModel(viewModel: AuthSharedViewModel): ViewModel
 
     @Binds
     @IntoMap

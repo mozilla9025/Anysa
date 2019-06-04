@@ -3,17 +3,10 @@ package app.anysa.ui.modules.authorization.start
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
 import app.anysa.app.Constants
-import app.anysa.databinding.FragmentLoginBinding
 import app.anysa.databinding.FragmentStartBinding
-import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.base.abs.AbsFragment
-import app.anysa.ui.modules.authorization.login.LoginViewModel
 import app.anysa.util.annotation.RequiresView
 import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.navigation.NavigationUtils

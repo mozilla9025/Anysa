@@ -1,18 +1,12 @@
 package app.anysa.ui.modules.authorization.register
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
 import app.anysa.R
-import app.anysa.databinding.FragmentLoginBinding
 import app.anysa.databinding.FragmentRegisterBinding
 import app.anysa.helper.CheckHelper
-import app.anysa.ui.base.BaseFragment
 import app.anysa.ui.base.abs.AbsFragment
-import app.anysa.ui.modules.authorization.login.LoginViewModel
+import app.anysa.ui.modules.authorization.AuthSharedViewModel
 import app.anysa.ui.widget.expandable_layout.ExpandableLayout
 import app.anysa.util.annotation.RequiresView
 import app.anysa.util.annotation.RequiresViewModel
@@ -21,9 +15,9 @@ import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
 
-@RequiresViewModel(RegisterViewModel::class)
+@RequiresViewModel(AuthSharedViewModel::class)
 @RequiresView(R.layout.fragment_register)
-class RegisterFragment : AbsFragment<RegisterViewModel, FragmentRegisterBinding>() {
+class RegisterFragment : AbsFragment<AuthSharedViewModel, FragmentRegisterBinding>() {
 
     override fun onBound(binding: FragmentRegisterBinding?) {
         super.onBound(binding)

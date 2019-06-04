@@ -10,25 +10,26 @@ import java.io.OutputStream
 class EncryptedRequestBody(request: Parcelable, keyFromServer: String) {
 
     @SerializedName("c")
-    private var encryptedBody: String
+    var encryptedBody: String
     @SerializedName("p")
-    private var encryptKey: String
+    var encryptKey: String
 
     init {
-        logd("EncryptedRequestBody  $request     $keyFromServer")
         val gson = Gson()
         val jsonBody = gson.toJson(request)
-        logd("EncryptedRequestBody  $jsonBody")
+//        logd("EncryptedRequestBody  $jsonBody")
+
+//        val jsonBody = "{\"loginname\":\"13322221313\", \"password\":\"d8578edf8458ce06fbc5bb76a58c5ca4\", \"device\":\"mobile\"}"
+//
+//        val keyFromServer = "-----BEGIN PUBLIC KEY-----\n" +
+//                "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVt2zuhHAMejV8syGsImaEwiME\n" +
+//                "0hpUpHBWBz0ZGwG11aHollAuOjUEMxpVe85mii5ErGWILgBJ6wFNA5cJrshhrpz7\n" +
+//                "EzoWVXR/FUZAvbQ0Y9GuxsXUNS7ZYKqyGmGwiMYdLSFVGltv6Gu5OoC8OVyWWgiF\n" +
+//                "sb054PmHf0p5P3JBHwIDAQAB\n" +
+//                "-----END PUBLIC KEY-----"
 
         val randomPrivateKey = CryptoUtils.getRandomString(8)
-
-
-
         this.encryptKey = RsaEncryptor.encrypt(randomPrivateKey, keyFromServer)
-        this.encryptedBody = AES.encrypt(jsonBody, randomPrivateKey.md5())!!
-
-        logd("EncryptedRequestBody  $encryptKey     $encryptedBody")
-        encryptedBody = "j6dKKYdc3bLkncrAYxdDtbENwCQrAbo9QiWVLbsqXZqUxeZTAtMtc8IGOnYk/b8kaUxCqRa/nFydEG/qQQEkSVIgPILcEinlbMbmCmA7htW2IOtHpi3aATOiAGX0RcQo7ldi0t16WI0KHkdZ9BhJ+L1o8+jURBOltwGU4raxoTTWH/HoMMJix43jiVfY7FIspf0DbTFArTeozchHaTwDtHofrmLriyUO9r0ZGP29avkTiBZ+ydnNJYN4sSLyzmiw"
-        encryptKey = "KjPcKWyobv0Gcp3g8WrUvPx5Y/9C9tPXS2NSzOYWXR4AlznStqlNcXOv5w0gd/jS0KEr6L6ZmupnXHbpAr+TA6lv4GgE3X+JhznvnyeDZxt6wGl6Voni8tQEqkmUhryFP3EC67fGfHvPDkTY91Yv8rackXGkDaDJvCqAYslNkcU="
+        this.encryptedBody = AESencryptor.encrypt(randomPrivateKey.md5(), jsonBody)!!
     }
 }

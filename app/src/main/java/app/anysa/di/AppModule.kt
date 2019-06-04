@@ -19,8 +19,7 @@ internal class AppModule {
 
     @Singleton
     @Provides
-    fun provideGson(): Gson = GsonBuilder().create()
-
+    fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
     @Singleton
     @Provides

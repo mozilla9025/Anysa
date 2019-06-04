@@ -1,7 +1,7 @@
 package app.anysa.di
 
-import app.anysa.domain.usecase.SignUpUseCase
-import app.anysa.domain.usecase.impl.SignUpUseCaseImpl
+import app.anysa.domain.usecase.AuthUseCase
+import app.anysa.domain.usecase.impl.AuthUseCaseImpl
 import dagger.Binds
 import dagger.Module
 
@@ -9,6 +9,6 @@ import dagger.Module
 interface UseCaseModule {
 
     @Binds
-    fun bindAuthUseCase(useCase: SignUpUseCaseImpl): SignUpUseCase
+    fun bindAuthUseCase(useCase: AuthUseCaseImpl): AuthUseCase
 
 }

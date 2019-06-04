@@ -16,7 +16,7 @@ class CheckHelper(var context: Context?) {
 //        return if (phoneNumber.length < 13)
 //            CheckResult(false, phoneNumber, context!!.getString(R.string.error_invalid_phone_number))
 //        else
-        return CheckResult(true, "13444444444")
+        return CheckResult(true, phoneNumber.replace("+86", "").replace(" +", "").trim())
     }
 
     fun isPasswordValid(password: String): CheckResult {
