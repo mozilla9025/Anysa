@@ -12,5 +12,5 @@ class AuthApiController(private val api: AuthApi) {
 
 //    fun register() = api.register(EncryptedRequestBody())
 //
-//    fun login(@Body body: EncryptedRequestBody): Observable<Response<ResponseBody>>
+//    fun login(@Body body: EncryptedRequestBody): Observable<ApiResponse<ResponseBody>>
 }

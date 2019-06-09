@@ -11,12 +11,12 @@ import java.util.regex.Pattern
 class CheckHelper(var context: Context?) {
 
     fun isPhoneNumberValid(phoneNumber: String): CheckResult {
-//        val pattern: Pattern = Pattern.compile("^(?:\\+?86)?1(?:3\\d{3}|5[^4\\D]\\d{2}|8\\d{3}|7(?:[35678]\\d{2}|4(?:0\\d|1[0-2]|9\\d))|9[189]\\d{2}|66\\d{2})\\d{6}\$")
+        val regex = Regex("^(?:\\+?86)?1(?:3\\d{3}|5[^4\\D]\\d{2}|8\\d{3}|7(?:[35678]\\d{2}|4(?:0\\d|1[0-2]|9\\d))|9[189]\\d{2}|66\\d{2})\\d{6}\$")
 
-//        return if (phoneNumber.length < 13)
-//            CheckResult(false, phoneNumber, context!!.getString(R.string.error_invalid_phone_number))
-//        else
-        return CheckResult(true, phoneNumber.replace("+86", "").replace(" +", "").trim())
+        if (!phoneNumber.replace(" ", "").matches(regex))
+            return CheckResult(false, phoneNumber, context!!.getString(R.string.error_invalid_phone_number))
+        else
+            return CheckResult(true, phoneNumber.replace("+86", "").replace(" ", "").trim())
     }
 
     fun isPasswordValid(password: String): CheckResult {
@@ -75,7 +75,7 @@ class CheckHelper(var context: Context?) {
         val name = name.replaceExtraSpaces()
 
         if (!isRequired && name.isEmpty())
-            return CheckResult(true, null)
+            return CheckResult(true, "")
 
 
         val checkFieldIsEmpty = checkFieldIsEmpty(name)
@@ -93,7 +93,7 @@ class CheckHelper(var context: Context?) {
         val bio = bio.replaceExtraSpaces()
 
         if (!isRequired && bio.isEmpty())
-            return CheckResult(true, null)
+            return CheckResult(true, "")
 
 
         val checkFieldIsEmpty = checkFieldIsEmpty(bio)
@@ -108,7 +108,7 @@ class CheckHelper(var context: Context?) {
         val s = s.replaceExtraSpaces()
 
         if (!isRequired && TextUtils.isEmpty(s))
-            return CheckResult(true, null)
+            return CheckResult(true, "")
 
         return if (TextUtils.isEmpty(s)) CheckResult(false, s, context!!.getString(R.string.error_field_is_empty)) else CheckResult(true, s)
 
@@ -118,7 +118,7 @@ class CheckHelper(var context: Context?) {
         val email = email.replaceExtraSpaces()
 
         if (!isRequired && TextUtils.isEmpty(email))
-            return CheckResult(true, null)
+            return CheckResult(true, "")
 
         val matches = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 

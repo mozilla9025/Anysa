@@ -38,4 +38,6 @@
     <string name="error_password_must_contain_at_least_1_upper">Password must contain at least 1 upper case letter</string>
     <string name="error_invalid_phone_number">Invalid phone number format</string>
     <string name="error_bio_too_long">Bio is too long</string>
+    <string name="error_can_not_connect_to_server">Can not connect to server. Check your internet connection and try again</string>
+    <string name="login_fragment_invalid_phone_or_password">Invalid phone or password</string>
 </resources>

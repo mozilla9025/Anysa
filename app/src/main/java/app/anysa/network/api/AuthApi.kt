@@ -1,5 +1,6 @@
 package app.anysa.network.api
 
+import app.anysa.domain.pojo.BaseResponse
 import app.anysa.domain.pojo.request.SignInRequest
 import app.anysa.domain.pojo.response.SignInResponse
 import app.anysa.domain.pojo.response.SignUpResponse
@@ -12,7 +13,7 @@ import retrofit2.http.*
 
 interface AuthApi {
     @GET("http://47.88.231.69:80/MsgServer/publicKey/public.key")
-    fun getPubKey(): Single<String>
+    fun getPubKey(): Single<ResponseBody>
 
     @POST("/login/")
     @FormUrlEncoded
@@ -24,5 +25,6 @@ interface AuthApi {
 
     @POST("/login/")
     @FormUrlEncoded
-    fun login(@Field("p") encryptedKey: String, @Field("c") encryptedBody: String): Single<SignInResponse>
+    fun login(@Field("p") encryptedKey: String, @Field("c") encryptedBody: String):
+            Single<BaseResponse<SignInResponse>>
 }
