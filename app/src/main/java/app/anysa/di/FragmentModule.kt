@@ -2,6 +2,7 @@ package app.anysa.di
 
 import app.anysa.ui.modules.authorization.login.LoginFragment
 import app.anysa.ui.modules.authorization.register.RegisterFragment
+import app.anysa.ui.modules.authorization.splash.SplashScreenFragment
 import app.anysa.ui.modules.authorization.start.StartFragment
 import app.anysa.ui.modules.main.MainFragment
 import dagger.Module
@@ -9,6 +10,8 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class FragmentModule {
+    @ContributesAndroidInjector
+    abstract fun contributeSplashScreenFragment(): SplashScreenFragment
     @ContributesAndroidInjector
     abstract fun contributeLoginFragment(): LoginFragment
     @ContributesAndroidInjector

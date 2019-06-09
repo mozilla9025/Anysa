@@ -1,19 +1,26 @@
 package app.anysa.ui.modules.main
 
-import android.app.Application
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import app.anysa.R
-import app.anysa.helper.preferences.PreferencesManager
-import app.anysa.ui.base.BaseFragment
-import app.anysa.ui.base.BaseViewModel
+import androidx.lifecycle.MutableLiveData
+import app.anysa.domain.pojo.ApiResponse
+import app.anysa.domain.usecase.AuthUseCase
 import app.anysa.ui.base.abs.AbsViewModel
+import io.reactivex.Completable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor()  : AbsViewModel() {
+class MainViewModel @Inject constructor(
+        private val authUseCase: AuthUseCase) : AbsViewModel() {
 
+    val logoutData = MutableLiveData<ApiResponse<Completable>>()
 
+    fun logout() {
+        add(authUseCase.logout()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    logoutData.value = ApiResponse.success()
+                }, {
+                    logoutData.value = ApiResponse.error(it)
+                }))
+    }
 
 }

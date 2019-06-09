@@ -37,19 +37,18 @@ class LoginFragment : AbsFragment<AuthSharedViewModel, FragmentLoginBinding>() {
         getViewModel()?.signInData?.observe(this, signInObserver)
     }
 
-    val signInObserver: Observer<ApiResponse<Any>> = Observer { t ->
-        context?.showToast("onChanged: ${t.exception}");
-
+    private val signInObserver: Observer<ApiResponse<Any>> = Observer { t ->
         when (t?.status) {
             ApiResponse.Status.SUCCESS -> {
                 NavigationUtils.navigate(view,
-                        LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+                        LoginFragmentDirections.actionLoginFragmentToMainFragment())
                 btn_sign_in.isEnabled = true
             }
             ApiResponse.Status.LOADING -> {
                 btn_sign_in.isEnabled = false
             }
             ApiResponse.Status.ERROR -> {
+                logd("onchange:: ${t.exception}")
                 if (t.exception is InvalidAuthDataException) {
                     context?.showToast(R.string.login_fragment_invalid_phone_or_password)
                 } else {

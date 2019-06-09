@@ -8,29 +8,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/main_fragment_nav_host"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="@dimen/dp0"
-            app:defaultNavHost="false"
-            app:layout_constraintBottom_toTopOf="@+id/view_bottom_navigation"
+        <!--<fragment-->
+            <!--android:id="@+id/main_fragment_nav_host"-->
+            <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
+            <!--android:layout_width="@dimen/dp0"-->
+            <!--android:layout_height="@dimen/dp0"-->
+            <!--app:defaultNavHost="false"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/view_bottom_navigation"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="logout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/view_bottom_navigation"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="@dimen/dp48"
-            android:layout_gravity="bottom"
-            android:background="@color/white"
-            app:itemIconSize="@dimen/dp24"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_bottom_navigation" />
+        <!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+            <!--android:id="@+id/view_bottom_navigation"-->
+            <!--android:layout_width="@dimen/dp0"-->
+            <!--android:layout_height="@dimen/dp48"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="@color/white"-->
+            <!--app:itemIconSize="@dimen/dp24"-->
+            <!--app:labelVisibilityMode="unlabeled"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:menu="@menu/menu_bottom_navigation" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

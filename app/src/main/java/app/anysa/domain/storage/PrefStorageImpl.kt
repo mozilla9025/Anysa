@@ -2,11 +2,9 @@ package app.anysa.domain.storage
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import app.anysa.domain.pojo.User
 import app.anysa.domain.pojo.response.SignInResponse
 import com.google.gson.Gson
 import io.reactivex.Completable
-import io.reactivex.Single
 
 @SuppressLint("ApplySharedPref")
 class PrefStorageImpl(
@@ -43,4 +41,10 @@ class PrefStorageImpl(
             gson.fromJson(pref.getString(AUTH_INFO, ""), SignInResponse::class.java)
         else null
     }
+
+    override fun hasAuthInfo(): Completable =
+            if (pref.contains(AUTH_INFO))
+                Completable.complete()
+            else
+                Completable.error(Throwable("Not logged in"))
 }

@@ -9,4 +9,5 @@ interface AuthStorage {
 
     fun saveAuthInfo(data: SignInResponse)
     fun getAuthInfo(): SignInResponse?
+    fun hasAuthInfo(): Completable
 }

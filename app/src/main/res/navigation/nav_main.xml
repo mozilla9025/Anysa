@@ -40,7 +40,11 @@
         android:id="@+id/mainFragment"
         android:name="app.anysa.ui.modules.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_splashScreenFragment"
+            app:destination="@id/splashScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="app.anysa.ui.modules.authorization.register.RegisterFragment"

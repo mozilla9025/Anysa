@@ -11,12 +11,28 @@ import app.anysa.util.extensions.logd
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class AuthSharedViewModel @Inject constructor(private val signupUseCase: AuthUseCase) : AbsViewModel() {
+class AuthSharedViewModel @Inject constructor(private val authUseCase: AuthUseCase) : AbsViewModel() {
 
+    val isLoggedInData = MutableLiveData<ApiResponse<Any>>()
     val signInData = MutableLiveData<ApiResponse<Any>>()
 
+
+    fun isLoggedIn() {
+        add(authUseCase.isLoggedIn()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    logd("success ")
+                    isLoggedInData.value = ApiResponse.success()
+                }, { t ->
+                    logd("error ")
+                    t.printStackTrace()
+                    isLoggedInData.value = ApiResponse.error(t)
+                })
+        )
+    }
+
     fun signUp(phone: String, password: String, email: String = "", name: String = "", bio: String = "") {
-        add(signupUseCase.signUp(SignUpRequest(phone, password.md5(), email, name, name, bio))
+        add(authUseCase.signUp(SignUpRequest(phone, password.md5(), email, name, name, bio))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     logd("Success")
@@ -24,7 +40,7 @@ class AuthSharedViewModel @Inject constructor(private val signupUseCase: AuthUse
     }
 
     fun signIn(phone: String, password: String) {
-        add(signupUseCase.signIn(SignInRequest(phone, password.md5()))
+        add(authUseCase.signIn(SignInRequest(phone, password.md5()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     signInData.value = ApiResponse.loading()
@@ -33,7 +49,10 @@ class AuthSharedViewModel @Inject constructor(private val signupUseCase: AuthUse
                     signInData.value = ApiResponse.success()
                 }, {
                     signInData.value = ApiResponse.error(it)
+                    it.printStackTrace()
                 }))
     }
+
+
 
 }
