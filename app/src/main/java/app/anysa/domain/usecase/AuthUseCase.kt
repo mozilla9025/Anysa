@@ -9,6 +9,6 @@ import io.reactivex.Single
 interface AuthUseCase {
     fun logout() : Completable
     fun isLoggedIn() : Completable
-    fun signUp(signUpRequest: SignUpRequest) : Single<SignUpResponse>
+    fun signUp(signUpRequest: SignUpRequest) : Completable
     fun signIn(signInRequest: SignInRequest) : Completable
 }

@@ -15,6 +15,7 @@ class AuthSharedViewModel @Inject constructor(private val authUseCase: AuthUseCa
 
     val isLoggedInData = MutableLiveData<ApiResponse<Any>>()
     val signInData = MutableLiveData<ApiResponse<Any>>()
+    val signUpData = MutableLiveData<ApiResponse<Any>>()
 
 
     fun isLoggedIn() {
@@ -32,11 +33,17 @@ class AuthSharedViewModel @Inject constructor(private val authUseCase: AuthUseCa
     }
 
     fun signUp(phone: String, password: String, email: String = "", name: String = "", bio: String = "") {
-        add(authUseCase.signUp(SignUpRequest(phone, password.md5(), email, name, name, bio))
+        add(authUseCase.signUp(SignUpRequest(phone, password.md5(), email, phone, name, bio))
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    signUpData.value = ApiResponse.loading()
+                }
                 .subscribe({
-                    logd("Success")
-                }, { logd("Error") }))
+                    signUpData.value = ApiResponse.success()
+                }, {
+                    signUpData.value = ApiResponse.error(it)
+                    it.printStackTrace()
+                }))
     }
 
     fun signIn(phone: String, password: String) {
@@ -52,7 +59,6 @@ class AuthSharedViewModel @Inject constructor(private val authUseCase: AuthUseCa
                     it.printStackTrace()
                 }))
     }
-
 
 
 }

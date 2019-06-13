@@ -2,8 +2,12 @@ package app.anysa.ui.modules.authorization.register
 
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import app.anysa.R
 import app.anysa.databinding.FragmentRegisterBinding
+import app.anysa.domain.pojo.ApiResponse
+import app.anysa.domain.pojo.exception.InvalidAuthDataException
+import app.anysa.domain.pojo.exception.PhoneAlreadyRegisteredException
 import app.anysa.helper.CheckHelper
 import app.anysa.ui.base.abs.AbsFragment
 import app.anysa.ui.modules.authorization.AuthSharedViewModel
@@ -11,9 +15,12 @@ import app.anysa.ui.widget.expandable_layout.ExpandableLayout
 import app.anysa.util.annotation.RequiresView
 import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.app_bar.AppBarStateChangeListener
+import app.anysa.util.extensions.logd
+import app.anysa.util.extensions.showToast
 import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.view_register_form_input.*
 
 @RequiresViewModel(AuthSharedViewModel::class)
 @RequiresView(R.layout.fragment_register)
@@ -56,7 +63,38 @@ class RegisterFragment : AbsFragment<AuthSharedViewModel, FragmentRegisterBindin
         btn_sign_up.setOnClickListener {
             checkFieldsAndSignUp()
         }
+
+        observe()
     }
+
+    private fun observe() {
+        getViewModel()?.signUpData?.observe(this, signUpObserver)
+    }
+
+    private val signUpObserver: Observer<ApiResponse<Any>> = Observer { t ->
+        when (t?.status) {
+            ApiResponse.Status.SUCCESS -> {
+                NavigationUtils.navigate(view,
+                        RegisterFragmentDirections.actionRegisterFragmentToMainFragment())
+                btn_sign_up.isEnabled = true
+            }
+            ApiResponse.Status.LOADING -> {
+                btn_sign_up.isEnabled = false
+            }
+            ApiResponse.Status.ERROR -> {
+                logd("onchange:: ${t.exception}")
+                if (t.exception is InvalidAuthDataException) {
+                    context?.showToast(getString(R.string.registration_error_occured))
+                } else if (t.exception is PhoneAlreadyRegisteredException) {
+                    rfiv_phone.setError(getString(R.string.registration_fragment_error_phone_registered))
+                } else {
+                    context?.showToast(R.string.error_can_not_connect_to_server)
+                }
+                btn_sign_up.isEnabled = true
+            }
+        }
+    }
+
 
     private fun collapse() {
         tv_advanced_data.setText(R.string.register_fragment_btn_show_advanced_data)
@@ -90,12 +128,12 @@ class RegisterFragment : AbsFragment<AuthSharedViewModel, FragmentRegisterBindin
             isError = true
         }
         val passwordValid = checkHelper.isPasswordValid(rfiv_password.text)
-        if (!phoneNumberValid.isValid) {
+        if (!passwordValid.isValid) {
             rfiv_password.setError(passwordValid.errorMessage)
             isError = true
         }
         val nameValid = checkHelper.isNameValid(rfiv_full_name.text)
-        if (!phoneNumberValid.isValid) {
+        if (!nameValid.isValid) {
             rfiv_full_name.setError(nameValid.errorMessage)
             isError = true
             needToExpand = true
@@ -117,8 +155,7 @@ class RegisterFragment : AbsFragment<AuthSharedViewModel, FragmentRegisterBindin
         if (isError) return
 
 
-        getViewModel()?.signUp(phoneNumberValid.formattedValue!!, passwordValid.formattedValue!!)
-
-        Toast.makeText(context, "OK", Toast.LENGTH_LONG).show()
+        getViewModel()?.signUp(phoneNumberValid.formattedValue, passwordValid.formattedValue,
+                emailValid.formattedValue, nameValid.formattedValue, bioValid.formattedValue)
     }
 }

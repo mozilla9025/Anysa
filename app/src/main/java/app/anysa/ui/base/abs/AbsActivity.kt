@@ -17,6 +17,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import app.anysa.R
+import app.anysa.helper.locale.LocaleManager
 import app.anysa.util.annotation.AnnotationUtil
 
 abstract class AbsActivity<B : ViewDataBinding, VM : AbsViewModel> : AbsDaggerActivity<VM>() {
@@ -32,6 +33,7 @@ abstract class AbsActivity<B : ViewDataBinding, VM : AbsViewModel> : AbsDaggerAc
         setView()
         performDataBinding()
 
+        LocaleManager.setLocale(this)
     }
 
     private fun setView() {

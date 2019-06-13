@@ -30,7 +30,7 @@ class AuthUseCaseImpl @Inject constructor(private val authRepository: AuthReposi
                 .subscribeOn(Schedulers.io())
     }
 
-    override fun signUp(signUpRequest: SignUpRequest): Single<SignUpResponse> {
+    override fun signUp(signUpRequest: SignUpRequest): Completable {
         return authRepository.signUp(signUpRequest)
                 .subscribeOn(Schedulers.io())
     }

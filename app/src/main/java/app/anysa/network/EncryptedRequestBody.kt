@@ -17,6 +17,7 @@ class EncryptedRequestBody(request: Parcelable, keyFromServer: String) {
     init {
         val gson = Gson()
         val jsonBody = gson.toJson(request)
+        logd("EncryptedRequestBody: $jsonBody")
 
         val randomPrivateKey = CryptoUtils.getRandomString(8)
         this.encryptKey = RsaEncryptor.encrypt(randomPrivateKey, keyFromServer)

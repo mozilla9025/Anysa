@@ -32,49 +32,49 @@ class CheckHelper(var context: Context?) {
                     String.format(context!!.getString(R.string.error_password_must_be_at_least_characters_long), MIN_PASSWORD_LENGTH))
         }
 
-        var capitalFlag = false
-        var lowerCaseFlag = false
-        var numberFlag = false
-
-        var ch: Char
-
-        for (i in 0 until password.length) {
-            ch = password[i]
-
-            if (Character.isDigit(ch)) {
-                numberFlag = true
-            } else if (Character.isUpperCase(ch)) {
-                capitalFlag = true
-            } else if (Character.isLowerCase(ch)) {
-                lowerCaseFlag = true
-            }
-
-
-            if (numberFlag && capitalFlag && lowerCaseFlag)
-                break
-        }
-
-        if (!numberFlag) {
-            return CheckResult(false, password,
-                    context!!.getString(R.string.error_password_must_contain_one_number))
-        }
-
-        if (!lowerCaseFlag) {
-            return CheckResult(false, password,
-                    context!!.getString(R.string.error_password_must_contain_at_least_1_lower))
-        }
-
-        return if (!capitalFlag) {
-            CheckResult(false, password,
-                    context!!.getString(R.string.error_password_must_contain_at_least_1_upper))
-        } else CheckResult(true, password)
+        return CheckResult(true, password)
+//        var capitalFlag = false
+//        var lowerCaseFlag = false
+//        var numberFlag = false
+//
+//        var ch: Char
+//
+//        for (i in 0 until password.length) {
+//            ch = password[i]
+//
+//            if (Character.isDigit(ch)) {
+//                numberFlag = true
+//            } else if (Character.isUpperCase(ch)) {
+//                capitalFlag = true
+//            } else if (Character.isLowerCase(ch)) {
+//                lowerCaseFlag = true
+//            }
+//
+//
+//            if (numberFlag && capitalFlag && lowerCaseFlag)
+//                break
+//        }
+//
+//        if (!numberFlag) {
+//            return CheckResult(false, password,
+//                    context!!.getString(R.string.error_password_must_contain_one_number))
+//        }
+//
+//        if (!lowerCaseFlag) {
+//            return CheckResult(false, password,
+//                    context!!.getString(R.string.error_password_must_contain_at_least_1_lower))
+//        }
+//
+//        return if (!capitalFlag) {
+//            CheckResult(false, password,
+//                    context!!.getString(R.string.error_password_must_contain_at_least_1_upper))
 
     }
 
     fun isNameValid(name: String, isRequired: Boolean = false): CheckResult {
         val name = name.replaceExtraSpaces()
 
-        if (!isRequired && name.isEmpty())
+        if (!isRequired && name.isNullOrEmpty())
             return CheckResult(true, "")
 
 
@@ -92,7 +92,7 @@ class CheckHelper(var context: Context?) {
     fun isBioValid(bio: String, isRequired: Boolean = false): CheckResult {
         val bio = bio.replaceExtraSpaces()
 
-        if (!isRequired && bio.isEmpty())
+        if (!isRequired && bio.isNullOrEmpty())
             return CheckResult(true, "")
 
 
@@ -100,24 +100,24 @@ class CheckHelper(var context: Context?) {
         if (!checkFieldIsEmpty.isValid) return checkFieldIsEmpty
 
         return if (bio.length > 255) {
-            CheckResult(false, bio, context!!.getString(R.string.error_name_too_long))
+            CheckResult(false, bio, context!!.getString(R.string.error_bio_too_long))
         } else CheckResult(true, bio)
     }
 
     fun checkFieldIsEmpty(s: String, isRequired: Boolean = false): CheckResult {
         val s = s.replaceExtraSpaces()
 
-        if (!isRequired && TextUtils.isEmpty(s))
+        if (!isRequired && s.isNullOrEmpty())
             return CheckResult(true, "")
 
-        return if (TextUtils.isEmpty(s)) CheckResult(false, s, context!!.getString(R.string.error_field_is_empty)) else CheckResult(true, s)
+        return if (s.isNullOrEmpty()) CheckResult(false, s, context!!.getString(R.string.error_field_is_empty)) else CheckResult(true, s)
 
     }
 
     fun checkEmailValid(email: String, isRequired: Boolean = false): CheckResult {
         val email = email.replaceExtraSpaces()
 
-        if (!isRequired && TextUtils.isEmpty(email))
+        if (!isRequired && email.isNullOrEmpty())
             return CheckResult(true, "")
 
         val matches = Patterns.EMAIL_ADDRESS.matcher(email).matches()

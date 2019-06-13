@@ -16,5 +16,5 @@ interface AuthRepository {
     fun signIn(signInRequest: SignInRequest): Completable
     fun logoutCurrentUser(): Completable
 
-    fun signUp(signUpRequest: SignUpRequest): Single<SignUpResponse>
+    fun signUp(signUpRequest: SignUpRequest): Completable
 }

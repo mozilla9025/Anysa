@@ -15,13 +15,9 @@ interface AuthApi {
     @GET("http://47.88.231.69:80/MsgServer/publicKey/public.key")
     fun getPubKey(): Single<ResponseBody>
 
-    @POST("/login/")
+    @POST("/regist/")
     @FormUrlEncoded
-    fun register(@Field("p") p: String, @Field("c") c: String): Single<SignUpResponse>
-
-    @POST("/login/")
-    @FormUrlEncoded
-    fun register(@Header("Content-Type") type: String, @Field("p") p: String, @Field("c") c: String): Single<SignUpResponse>
+    fun register(@Field("p") p: String, @Field("c") c: String): Single<BaseResponse<SignInResponse>>
 
     @POST("/login/")
     @FormUrlEncoded
