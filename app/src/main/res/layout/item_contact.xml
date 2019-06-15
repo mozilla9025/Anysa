@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="user"
+            type="app.anysa.domain.pojo.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/dp42"
+            android:layout_height="@dimen/dp42"
+            android:layout_marginStart="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginBottom="@dimen/dp8"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{user}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginEnd="@dimen/dp12"
+            android:ellipsize="end"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:maxLines="1"
+            android:text="@{user.userName}"
+            android:textColor="@color/color4e4e4e"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintBottom_toTopOf="@id/tv_last_seen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@id/iv_avatar"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Annd asdff fasdf" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_last_seen"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp1"
+            android:layout_marginEnd="@dimen/dp12"
+            android:ellipsize="end"
+            android:fontFamily="@font/helvetica_neue_light"
+            android:maxLines="1"
+            android:text="13 minutes ago"
+            android:textColor="@color/color4e4e4e"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="13 minutes ago" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="@dimen/dp1"
+            android:layout_marginTop="@dimen/dp8"
+            android:background="@color/colorDividers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

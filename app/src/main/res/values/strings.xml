@@ -42,4 +42,8 @@
     <string name="login_fragment_invalid_phone_or_password">Invalid phone or password</string>
     <string name="registration_error_occured">Error occured</string>
     <string name="registration_fragment_error_phone_registered">This phone is already registered</string>
+    <string name="fragment_contacts_title">Contacts</string>
+    <string name="search_view_hint_search">Search</string>
+    <string name="contacts_fragment_search_hint">Search</string>
+    <string name="contacts_fragment_view">View</string>
 </resources>

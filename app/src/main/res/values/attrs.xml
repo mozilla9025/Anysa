@@ -22,4 +22,17 @@
         <attr name="android:orientation" />
     </declare-styleable>
 
+    <declare-styleable name="ToolbarView">
+        <attr name="tv_action_left_icon" format="reference" />
+        <attr name="tv_action_left_tint" format="color" />
+        <attr name="tv_action_icon" format="reference" />
+        <attr name="tv_action_tint" format="color" />
+        <attr name="tv_text" format="string"/>
+        <attr name="tv_text_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="SearchView">
+        <attr name="sv_hint" format="string" />
+    </declare-styleable>
+
 </resources>
