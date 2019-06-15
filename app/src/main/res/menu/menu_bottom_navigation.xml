@@ -4,27 +4,34 @@
     <item
         android:id="@+id/menu_dialogsFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_chat"
         android:title="@null"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_groupFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_groups"
+        android:title="@null"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_contactsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_contacts"
         android:title="@null"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_applicationFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_worldwide"
         android:title="@null"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_profileFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_profile"
         android:title="@null"
         app:showAsAction="ifRoom" />
 

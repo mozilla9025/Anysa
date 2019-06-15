@@ -1,8 +1,7 @@
 package app.anysa.ui.modules.main.profilenav
 
-import android.app.Application
-import app.anysa.ui.base.BaseViewModel
+import app.anysa.ui.base.abs.AbsViewModel
+import javax.inject.Inject
 
-class ProfileNavViewModel(application: Application) : BaseViewModel(application) {
-    // TODO: Implement the ViewModel
+class ProfileNavViewModel @Inject constructor() : AbsViewModel() {
 }

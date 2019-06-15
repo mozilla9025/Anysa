@@ -1,29 +1,15 @@
 package app.anysa.ui.modules.main.profilenav.profile.settings
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import app.anysa.R
-import app.anysa.ui.base.BaseFragment
+import app.anysa.databinding.FragmentSettingsBinding
+import app.anysa.ui.base.abs.AbsFragment
+import app.anysa.util.annotation.RequiresView
+import app.anysa.util.annotation.RequiresViewModel
 
-class SettingsFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = SettingsFragment()
-    }
+@RequiresView(R.layout.fragment_settings)
+@RequiresViewModel(SettingsViewModel::class)
+class SettingsFragment  : AbsFragment<SettingsViewModel, FragmentSettingsBinding>(){
 
-    private lateinit var viewModel: SettingsViewModel
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
-    }
 
 }

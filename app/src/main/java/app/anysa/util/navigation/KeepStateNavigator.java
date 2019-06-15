@@ -173,10 +173,10 @@ public class KeepStateNavigator extends Navigator<FragmentNavigator.Destination>
                 ft.add(this.mContainerId, frag, className);
             } else {
                 for (Fragment fragment : mFragmentManager.getFragments()) {
-//                    if (fragment.isVisible() || frag instanceof ConsultationsNavFragment) {
-//                        FragmentTransaction ft1 = this.mFragmentManager.beginTransaction();
-//                        ft1.hide(fragment).commitNow();
-//                    }
+                    if (fragment.isVisible()) {
+                        FragmentTransaction ft1 = this.mFragmentManager.beginTransaction();
+                        ft1.hide(fragment).commitNow();
+                    }
                 }
                 if (fragmentCreatedFirstTime && !frag.isAdded()) {
                     ft.add(this.mContainerId, frag, className);

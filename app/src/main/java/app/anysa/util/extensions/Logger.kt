@@ -6,4 +6,4 @@ inline fun <reified T> T.logi(message: String) = Log.i(T::class.java.simpleName,
 
 inline fun <reified T> T.logd(message: String) = Log.d(T::class.java.simpleName, message)
 
-inline fun <reified T> T.loge(message: String, error: Throwable) = Log.e(T::class.java.simpleName, message, error)
+inline fun <reified T> T.loge(message: String, error: Throwable? = null) = Log.e(T::class.java.simpleName, message, error)

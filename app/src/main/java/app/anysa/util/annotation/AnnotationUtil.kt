@@ -22,4 +22,6 @@ object AnnotationUtil {
 
     fun hasInject(any: Any) = any.javaClass.isAnnotationPresent(RequiresInject::class.java)
 
+    fun isNavFragment(any: Any) = any.javaClass.isAnnotationPresent(NavFragment::class.java)
+
 }
