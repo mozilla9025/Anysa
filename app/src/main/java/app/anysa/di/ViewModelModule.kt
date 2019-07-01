@@ -7,6 +7,7 @@ import app.anysa.ui.modules.authorization.AuthSharedViewModel
 import app.anysa.ui.modules.authorization.start.StartViewModel
 import app.anysa.ui.modules.main.MainViewModel
 import app.anysa.ui.modules.main.contactsnav.ContactsNavViewModel
+import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactViewModel
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsViewModel
 import app.anysa.ui.modules.main.profilenav.ProfileNavViewModel
 import app.anysa.ui.modules.main.profilenav.profile.ProfileViewModel
@@ -66,5 +67,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ContactsViewModel::class)
     internal abstract fun bindContactsViewModel(viewModel: ContactsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddContactViewModel::class)
+    internal abstract fun bindAddContactViewModel(viewModel: AddContactViewModel): ViewModel
 
 }

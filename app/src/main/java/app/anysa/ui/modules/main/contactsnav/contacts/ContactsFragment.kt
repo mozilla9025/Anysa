@@ -10,6 +10,7 @@ import app.anysa.ui.base.abs.AbsFragment
 import app.anysa.util.annotation.RequiresView
 import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.app_bar.AppBarStateChangeListener
+import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -34,6 +35,9 @@ class ContactsFragment : AbsFragment<ContactsViewModel, FragmentContactsBinding>
                     }
                 }
             })
+            toolbarView.setOnActionClickListener {
+                NavigationUtils.navigate(view!!, ContactsFragmentDirections.actionContactsFragmentToAddContactFragment())
+            }
         }
     }
 

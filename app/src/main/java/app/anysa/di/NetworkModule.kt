@@ -3,6 +3,7 @@ package app.anysa.di
 import android.app.Application
 import app.anysa.BuildConfig
 import app.anysa.network.api.AuthApi
+import app.anysa.network.api.ContactsApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -59,7 +60,12 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi {
-        val api = retrofit.create(AuthApi::class.java)
-        return api
+        return retrofit.create(AuthApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideContactsApi(retrofit: Retrofit): ContactsApi {
+        return retrofit.create(ContactsApi::class.java)
     }
 }

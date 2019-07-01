@@ -1,8 +1,6 @@
 package app.anysa.ui.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
@@ -11,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.anysa.R
-import app.anysa.helper.locale.ApplicationLanguage
+import app.anysa.util.extensions.initForPhoneInput
 import kotlinx.android.synthetic.main.view_register_form_input.view.*
 
 
@@ -91,44 +89,7 @@ class RegisterFormInputView : ConstraintLayout {
                     text_input_layout.visibility = View.GONE
                     edit_text_phone.visibility = View.VISIBLE
 
-                    edit_text_phone.inputType = InputType.TYPE_CLASS_PHONE
-                    edit_text_phone.addTextChangedListener(PhoneNumberFormattingTextWatcher(ApplicationLanguage.CN.languageCode))
-
-                    edit_text_phone.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                        }
-
-                        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                        }
-
-                        @SuppressLint("SetTextI18n")
-                        override fun afterTextChanged(s: Editable?) {
-                            val text = edit_text_phone.text ?: return
-
-                            if (text.isEmpty() or text.startsWith("+86")) return
-
-                            if (text.startsWith("+")) {
-                                if (text.startsWith("+8")) {
-                                    if (!text.startsWith("+86") && text.length > 2) {
-                                        edit_text_phone.setText("+86${text.substring(2, text.length)}")
-                                    }
-                                } else {
-                                    if (text.length > 1) {
-                                        edit_text_phone.setText("+8${text.substring(1, text.length)}")
-                                    }
-                                }
-                            } else {
-                                if (text.startsWith("86") || text.startsWith("8")) {
-                                    edit_text_phone.setText("+$text")
-                                } else {
-                                    edit_text_phone.setText("+86$text")
-                                }
-                            }
-                            edit_text_phone.setSelection(edit_text_phone.text!!.length)
-                            setError(null)
-                        }
-                    })
+                    edit_text_phone.initForPhoneInput()
                 }
                 TYPE_EMAIL -> {
                     text_input_layout.visibility = View.VISIBLE

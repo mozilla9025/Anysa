@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.anysa.R
+import app.anysa.util.extensions.initForPhoneInput
 import app.anysa.util.extensions.closeKeyboard
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.Disposable
@@ -34,9 +35,12 @@ class SearchView @JvmOverloads constructor(
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.SearchView)
 
         val hint = attributes.getString(R.styleable.SearchView_sv_hint)
+        val isPhone = attributes.getBoolean(R.styleable.SearchView_sv_isPhone, false)
         if (hint?.isNotEmpty()!!) {
             etSearch.hint = hint
         }
+        if(isPhone)
+            etSearch.initForPhoneInput()
 
         attributes.recycle()
 
@@ -51,9 +55,6 @@ class SearchView @JvmOverloads constructor(
     }
 
     private fun setupCallbacks() {
-//        etSearch.onFocusChangeListener = (OnFocusChangeListener { v, hasFocus ->
-//            ibSearchCancel.visibility = if (hasFocus) View.VISIBLE else View.GONE
-//        })
 
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -75,11 +76,6 @@ class SearchView @JvmOverloads constructor(
             }
             false
         }
-
-//        ibSearchCancel.setOnClickListener {
-//            etSearch.setText("")
-//            closeKeyboardAndClearFocus()
-//        }
     }
 
     fun closeKeyboardAndClearFocus() {

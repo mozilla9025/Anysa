@@ -6,6 +6,7 @@ import app.anysa.ui.modules.authorization.splash.SplashScreenFragment
 import app.anysa.ui.modules.authorization.start.StartFragment
 import app.anysa.ui.modules.main.MainFragment
 import app.anysa.ui.modules.main.contactsnav.ContactsNavFragment
+import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactFragment
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsFragment
 import app.anysa.ui.modules.main.profilenav.ProfileNavFragment
 import app.anysa.ui.modules.main.profilenav.profile.ProfileFragment
@@ -35,4 +36,6 @@ abstract class FragmentModule {
     abstract fun contributeContactsNavFragment(): ContactsNavFragment
     @ContributesAndroidInjector
     abstract fun contributeContactsFragment(): ContactsFragment
+    @ContributesAndroidInjector
+    abstract fun contributeAddContactFragment(): AddContactFragment
 }

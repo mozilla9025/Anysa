@@ -84,4 +84,8 @@ class ToolbarView @JvmOverloads constructor(context: Context, attributes: Attrib
     fun setTextColor(color: Int) {
         tv_title.setTextColor(color)
     }
+
+    fun setOnActionClickListener(onClickListener: () -> Unit) {
+        ib_action.setOnClickListener { onClickListener.invoke() }
+    }
 }

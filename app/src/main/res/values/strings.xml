@@ -46,4 +46,9 @@
     <string name="search_view_hint_search">Search</string>
     <string name="contacts_fragment_search_hint">Search</string>
     <string name="contacts_fragment_view">View</string>
+    <string name="fragment_add_new_contact_title">Add New Contact</string>
+    <string name="fragment_add_contact_search_hint">Enter Phone Number</string>
+    <string name="fragment_add_contact_button_search">Search</string>
+    <string name="fragment_add_contact_found_message">Contact has been found. Tap + to add to friends. Tap name or photo to see the profile.</string>
+    <string name="fragment_add_contact_not_found_message">Unfortunately, this contact has not been found. Seems like this number does not exist in our system.</string>
 </resources>
