@@ -7,7 +7,9 @@ interface AuthStorage {
 
     fun clear(): Completable
 
-    fun saveAuthInfo(data: SignInResponse)
+    fun saveAuthInfo(data: SignInResponse, phone: Long)
     fun getAuthInfo(): SignInResponse?
     fun hasAuthInfo(): Completable
+    fun getAuthPhone(): Long?
+
 }

@@ -15,15 +15,36 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="app.anysa.ui.modules.main.profilenav.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile"
-        android:label="ProfileFragment">
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="app.anysa.ui.modules.main.profilenav.profile.settings.SettingsFragment"
-        tools:layout="@layout/fragment_settings"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="app.anysa.ui.modules.main.profilenav.profile.edit_profile.EditProfileFragment"
+        android:label="EditProfileFragment">
+        <argument
+            android:name="currentUser"
+            app:argType="app.anysa.domain.pojo.User"
+            app:nullable="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="app.anysa.ui.modules.main.profilenav.profile.settings.password.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" />
 </navigation>

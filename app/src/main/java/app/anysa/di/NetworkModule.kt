@@ -4,6 +4,7 @@ import android.app.Application
 import app.anysa.BuildConfig
 import app.anysa.network.api.AuthApi
 import app.anysa.network.api.ContactsApi
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -12,11 +13,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.google.gson.GsonBuilder
-import com.google.gson.Gson
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 
 @Module
@@ -39,7 +38,7 @@ class NetworkModule {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        client.addInterceptor(loggingInterceptor)
+        client.addNetworkInterceptor(loggingInterceptor)
 
         client.cache(cache)
         return client.build()

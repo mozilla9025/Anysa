@@ -50,4 +50,31 @@
         <item name="android:textSize">@dimen/sp24</item>
     </style>
 
+    <style name="SettingsLabelTextView">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp16</item>
+        <item name="android:layout_marginTop">@dimen/dp12</item>
+        <item name="android:layout_marginBottom">@dimen/dp12</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:fontFamily">@font/helvetica_neue_medium</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:textSize">@dimen/sp16</item>
+    </style>
+
+    <style name="SettingsDivider">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp1</item>
+        <item name="android:layout_marginStart">@dimen/dp20</item>
+        <item name="android:background">@color/colorDividers</item>
+    </style>
+
+    <style name="SettingsItemIcon">
+        <item name="android:layout_width">@dimen/dp26</item>
+        <item name="android:layout_height">@dimen/dp26</item>
+        <item name="android:layout_marginStart">@dimen/dp20</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 </resources>

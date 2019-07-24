@@ -10,7 +10,9 @@ import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactFragment
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsFragment
 import app.anysa.ui.modules.main.profilenav.ProfileNavFragment
 import app.anysa.ui.modules.main.profilenav.profile.ProfileFragment
+import app.anysa.ui.modules.main.profilenav.profile.edit_profile.EditProfileFragment
 import app.anysa.ui.modules.main.profilenav.profile.settings.SettingsFragment
+import app.anysa.ui.modules.main.profilenav.profile.settings.password.ChangePasswordFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -18,24 +20,40 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentModule {
     @ContributesAndroidInjector
     abstract fun contributeSplashScreenFragment(): SplashScreenFragment
+
     @ContributesAndroidInjector
     abstract fun contributeLoginFragment(): LoginFragment
+
     @ContributesAndroidInjector
     abstract fun contributeStartFragment(): StartFragment
+
     @ContributesAndroidInjector
     abstract fun contributeRegisterFragment(): RegisterFragment
+
     @ContributesAndroidInjector
     abstract fun contributeMainFragment(): MainFragment
+
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): SettingsFragment
+
     @ContributesAndroidInjector
     abstract fun contributeProfileFragment(): ProfileFragment
+
     @ContributesAndroidInjector
     abstract fun contributeProfileNavFragment(): ProfileNavFragment
+
     @ContributesAndroidInjector
     abstract fun contributeContactsNavFragment(): ContactsNavFragment
+
     @ContributesAndroidInjector
     abstract fun contributeContactsFragment(): ContactsFragment
+
     @ContributesAndroidInjector
     abstract fun contributeAddContactFragment(): AddContactFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeEditProfileFragment(): EditProfileFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChangePasswordFragment(): ChangePasswordFragment
 }

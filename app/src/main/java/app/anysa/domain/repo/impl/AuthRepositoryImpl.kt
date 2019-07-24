@@ -52,7 +52,13 @@ class AuthRepositoryImpl @Inject constructor(
                     api.login(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
                 }.flatMapCompletable {
                     if (it.isSuccessful()) {
-                        it.data<SignInResponse>()?.let { it1 -> authStorage.saveAuthInfo(it1) }
+                        it.data<SignInResponse>()?.let { it1 ->
+                            var phoneLong = -1L
+                            runCatching {
+                                phoneLong = signInRequest.phone.toLong()
+                            }
+                            authStorage.saveAuthInfo(it1, phoneLong)
+                        }
                         Completable.complete()
                     } else {
                         Completable.error(InvalidAuthDataException())

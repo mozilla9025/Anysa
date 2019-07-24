@@ -5,7 +5,6 @@ import android.text.TextUtils
 import android.util.Patterns
 import app.anysa.R
 import app.anysa.util.extensions.replaceExtraSpaces
-import java.util.regex.Pattern
 
 
 class CheckHelper(var context: Context?) {
@@ -17,6 +16,13 @@ class CheckHelper(var context: Context?) {
             return CheckResult(false, phoneNumber, context!!.getString(R.string.error_invalid_phone_number))
         else
             return CheckResult(true, phoneNumber.replace("+86", "").replace(" ", "").trim())
+    }
+
+    fun arePasswordsTheSame(password1: String, password2: String): CheckResult {
+        if (password1 == password2) {
+            return CheckResult(true, password1)
+        }
+        return CheckResult(false, password1, context!!.getString(R.string.fragment_change_password_error_passwords_not_match))
     }
 
     fun isPasswordValid(password: String): CheckResult {

@@ -61,7 +61,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:paddingTop="@dimen/dp10"
-            android:text="@{user.userName}"
+            android:text="@{user.username}"
             android:textColor="@color/white"
             android:textSize="@dimen/sp16"
             app:layout_constraintBottom_toTopOf="@id/tv_last_seen"

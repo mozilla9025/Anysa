@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp2"
+        android:layout_marginEnd="@dimen/dp2"
+        android:ellipsize="end"
+        android:fontFamily="@font/helvetica_neue_medium"
+        android:maxLines="1"
+        android:text="@string/fragment_profile_logout"
+        android:textColor="@color/textColorDark"
+        android:textSize="@dimen/sp16" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:fontFamily="@font/helvetica_neue_light"
+        android:gravity="start|top"
+        android:textColor="@color/textColorDark"
+        android:textColorHint="@color/textColorHint" />
+
+</LinearLayout>

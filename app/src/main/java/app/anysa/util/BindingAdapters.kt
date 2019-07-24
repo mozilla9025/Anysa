@@ -1,8 +1,11 @@
 package app.anysa.util
 
+import android.annotation.SuppressLint
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import app.anysa.domain.pojo.User
+import app.anysa.ui.widget.SettingsEditText
 import app.anysa.util.avatar.AvatarPlaceholder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -15,15 +18,37 @@ object BindingAdapters {
     fun setImageViewSrc(imageView: ImageView, user: User?) {
         user?.let {
             val placeholder = AvatarPlaceholder.build(user.id.toLong(),
-                    user.userName.let { user.userName } ?: "##")
+                    user.username.let { user.username } ?: "##")
 
-            Glide.with(imageView.context).load(it.avatarURL)
+            Glide.with(imageView.context).load(it.avatarUrl)
                     .apply(RequestOptions()
                             .centerCrop()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .override(500, 500)
                             .placeholder(placeholder))
                     .into(imageView)
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("app:set_text")
+    fun setImageViewSrc(et: SettingsEditText, text: String?) {
+        if (text != null) {
+            et.text = text
+        } else {
+            et.text = ""
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    @JvmStatic
+    @BindingAdapter("app:phone_number")
+    fun setPhoneNumber(tv: TextView, phone: String?) {
+        if (phone != null && phone.startsWith("+86")) {
+            tv.text = phone
+        } else {
+            tv.text = "+86$phone"
         }
     }
 }

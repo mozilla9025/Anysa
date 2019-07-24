@@ -8,6 +8,6 @@ abstract class ContactsAdapter<DB : ViewDataBinding, VH : AbsRecyclerViewAdapter
     : AbsRecyclerViewAdapter<User, DB, VH>() {
 
     override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem.id == newItem.id
-    override fun areContentTheSame(oldItem: User, newItem: User) = oldItem.userName == newItem.userName
+    override fun areContentTheSame(oldItem: User, newItem: User) = oldItem.username == newItem.username
 
 }

@@ -31,6 +31,9 @@
 
     <color name="colorDividers">#ececec</color>
     <color name="colorAvatarBackground">#F6F6F7</color>
+    <color name="avatarEditBackground">#546A6A6A</color>
+
+    <color name="buttonRoundStrokeDark">#9e9e9e</color>
 
 
 </resources>

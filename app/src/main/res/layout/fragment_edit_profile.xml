@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="app.anysa.domain.pojo.User" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <app.anysa.ui.widget.ToolbarView
+            android:id="@+id/toolbarView"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tv_action_left_icon="@drawable/ic_arrowback"
+            app:tv_action_left_tint="@color/black"
+            app:tv_text="@string/fragment_edit_profile_title" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarView">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <app.anysa.ui.widget.SettingsEditText
+                    android:id="@+id/set_fullname"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_marginEnd="@dimen/dp20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:set_hint="@string/edit_profile_hint_full_name"
+                    app:set_text="@{user.username}"
+                    app:set_title="@string/edit_profile_label_full_name" />
+
+                <app.anysa.ui.widget.SettingsEditText
+                    android:id="@+id/set_email"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:layout_marginEnd="@dimen/dp20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/set_fullname"
+                    app:set_hint="@string/edit_profile_hint_email"
+                    app:set_text="@{user.email}"
+                    app:set_title="@string/edit_profile_label_email" />
+
+                <app.anysa.ui.widget.SettingsEditText
+                    android:id="@+id/set_bio"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:layout_marginEnd="@dimen/dp20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/set_email"
+                    app:set_hint="@string/edit_profile_hint_bio"
+                    app:set_maxlines="5"
+                    app:set_text="@{user.description}"
+                    app:set_title="@string/edit_profile_label_bio" />
+
+                <app.anysa.ui.widget.GradientedButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp32"
+                    app:gb_text="@string/fragment_edit_profile_btn_save"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/set_bio"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <app.anysa.ui.widget.GradientedButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12"
+                    app:gb_background="@drawable/shape_btn_round_stroke_dark"
+                    app:gb_text="@string/fragment_edit_profile_btn_cancel"
+                    app:gb_text_color="@color/textColorDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_save"
+                    app:layout_constraintWidth_percent="0.4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,11 +1,13 @@
 package app.anysa.network
 
 import android.os.Parcelable
-import app.anysa.crypto.*
+import app.anysa.crypto.AESencryptor
+import app.anysa.crypto.CryptoUtils
+import app.anysa.crypto.RsaEncryptor
+import app.anysa.crypto.md5
 import app.anysa.util.extensions.logd
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import java.io.OutputStream
 
 class EncryptedRequestBody(request: Parcelable, keyFromServer: String = "",
                            method: Method = Method.ENCRYPT_AUTH,
@@ -33,7 +35,7 @@ class EncryptedRequestBody(request: Parcelable, keyFromServer: String = "",
             }
             Method.ENCRYPT_MAIN -> {
                 this.encryptKey = session
-                this.encryptedBody = AESencryptor.encrypt(password, jsonBody)!!
+                this.encryptedBody = AESencryptor.encrypt(password.md5(), jsonBody)!!
             }
         }
     }

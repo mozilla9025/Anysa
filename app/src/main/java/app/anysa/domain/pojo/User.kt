@@ -4,18 +4,34 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import app.anysa.domain.db.dao.ContactDao
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 @Entity(tableName = ContactDao.TABLE_NAME)
 open class User(@PrimaryKey
+                @SerializedName("id")
                 var id: Int = 0,
-                var userName: String? = "",
-                var statusDescription: String? = "",
-                var avatarURL: String? = "",
-                val lastModifiedDate: Long? = Date().time,
-                val updateAvatarDate: Long? = Date().time) : Parcelable {
+                @SerializedName("username")
+                var username: String? = "",
+                @SerializedName("instruction")
+                var description: String? = "",
+                @SerializedName("telephone")
+                var phone: String? = null,
+                @SerializedName("email")
+                val email: String? = null,
+                @SerializedName("head_image")
+                var avatarUrl: String? = ""
+) : Parcelable {
+
+
+    companion object {
+        fun empty(): User {
+            return User(EMPTY_USER_ID)
+        }
+
+        const val EMPTY_USER_ID = -1
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -29,18 +45,6 @@ open class User(@PrimaryKey
     }
 
     override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + (userName?.hashCode() ?: 0)
-        result = 31 * result + (statusDescription?.hashCode() ?: 0)
-        result = 31 * result + (avatarURL?.hashCode() ?: 0)
-        return result
-    }
-
-    companion object {
-        fun empty(): User {
-            return User(EMPTY_USER_ID)
-        }
-
-        const val EMPTY_USER_ID = -1
+        return id
     }
 }

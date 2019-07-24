@@ -11,7 +11,9 @@ import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactViewModel
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsViewModel
 import app.anysa.ui.modules.main.profilenav.ProfileNavViewModel
 import app.anysa.ui.modules.main.profilenav.profile.ProfileViewModel
+import app.anysa.ui.modules.main.profilenav.profile.edit_profile.EditProfileViewModel
 import app.anysa.ui.modules.main.profilenav.profile.settings.SettingsViewModel
+import app.anysa.ui.modules.main.profilenav.profile.settings.password.ChangePasswordViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -72,5 +74,14 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddContactViewModel::class)
     internal abstract fun bindAddContactViewModel(viewModel: AddContactViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditProfileViewModel::class)
+    internal abstract fun bindEditProfileViewModel(viewModel: EditProfileViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChangePasswordViewModel::class)
+    internal abstract fun bindChangePasswordViewModel(viewModel: ChangePasswordViewModel): ViewModel
 
 }

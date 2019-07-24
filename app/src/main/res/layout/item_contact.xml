@@ -38,7 +38,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/helvetica_neue_medium"
             android:maxLines="1"
-            android:text="@{user.userName}"
+            android:text="@{user.username}"
             android:textColor="@color/color4e4e4e"
             android:textSize="@dimen/sp16"
             app:layout_constraintBottom_toTopOf="@id/tv_last_seen"

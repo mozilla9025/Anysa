@@ -36,4 +36,18 @@
         <attr name="sv_isPhone" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="SettingsEditText">
+        <attr name="set_title" format="string" />
+        <attr name="set_text" format="string" />
+        <attr name="set_hint" format="string" />
+        <attr name="set_maxlines" format="integer" />
+        <attr name="set_isPassword" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientedButton">
+        <attr name="gb_text" format="string" />
+        <attr name="gb_background" format="reference" />
+        <attr name="gb_text_color" format="color"/>
+    </declare-styleable>
+
 </resources>

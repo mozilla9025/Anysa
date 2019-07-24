@@ -2,21 +2,14 @@ package app.anysa.domain.repo.impl
 
 import app.anysa.domain.pojo.BaseResponse
 import app.anysa.domain.pojo.User
-import app.anysa.domain.pojo.exception.InvalidAuthDataException
-import app.anysa.domain.pojo.exception.PhoneAlreadyRegisteredException
+import app.anysa.domain.pojo.request.ModifyUserRequest
 import app.anysa.domain.pojo.request.PhoneRequest
-import app.anysa.domain.pojo.request.SignInRequest
-import app.anysa.domain.pojo.request.SignUpRequest
-import app.anysa.domain.pojo.response.SignInResponse
-import app.anysa.domain.repo.AuthRepository
 import app.anysa.domain.repo.ContactsRepository
 import app.anysa.domain.storage.AuthStorage
 import app.anysa.network.EncryptedRequestBody
-import app.anysa.network.api.AuthApi
 import app.anysa.network.api.ContactsApi
-import io.reactivex.Completable
+import app.anysa.util.extensions.logd
 import io.reactivex.Single
-import okhttp3.ResponseBody
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,5 +24,45 @@ class ContactsRepositoryImpl @Inject constructor(
         val encryptedRequestBody = EncryptedRequestBody(phone, method = EncryptedRequestBody.Method.ENCRYPT_MAIN,
                 session = authInfo?.session!!, password = authInfo.password)
         return api.getUserByPhone(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
+    }
+
+    override fun getCurrentUser(): Single<BaseResponse<User>> {
+        val phone = authStorage.getAuthPhone().toString()
+        val authInfo = authStorage.getAuthInfo()
+
+        val encryptedRequestBody = EncryptedRequestBody(PhoneRequest(phone!!), method = EncryptedRequestBody.Method.ENCRYPT_MAIN,
+                session = authInfo?.session!!, password = authInfo.password)
+        return api.getUserByPhone(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
+    }
+
+    override fun modifyCurrentUserInfo(name: String, description: String, email: String): Single<BaseResponse<User>> {
+        val authInfo = authStorage.getAuthInfo()
+        var currentUserId = -1L
+        runCatching {
+            currentUserId = authInfo?.id?.toLong()!!
+        }
+
+        val modifyUserRequest = ModifyUserRequest(currentUserId, password = "", telephone = "",
+                head_image = "", name = name, username = name, email = email, description = description)
+
+        val encryptedRequestBody = EncryptedRequestBody(modifyUserRequest, method = EncryptedRequestBody.Method.ENCRYPT_MAIN,
+                session = authInfo?.session!!, password = authInfo.password)
+        return api.modifyCurrentUser(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
+    }
+
+    override fun changePassword(passwordmd5: String): Single<BaseResponse<User>> {
+        val authInfo = authStorage.getAuthInfo()
+        var currentUserId = -1L
+        runCatching {
+            currentUserId = authInfo?.id?.toLong()!!
+        }
+        logd("asdfasfsadfsdf ${authInfo?.password}")
+
+        val modifyUserRequest = ModifyUserRequest(currentUserId, password = passwordmd5, telephone = "",
+                head_image = "", name = "", username = "", email = "", description = "")
+
+        val encryptedRequestBody = EncryptedRequestBody(modifyUserRequest, method = EncryptedRequestBody.Method.ENCRYPT_MAIN,
+                session = authInfo?.session!!, password = authInfo.password)
+        return api.modifyCurrentUser(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
     }
 }

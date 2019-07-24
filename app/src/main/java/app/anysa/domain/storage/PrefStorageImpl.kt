@@ -15,6 +15,7 @@ class PrefStorageImpl(
         const val STORAGE = "anysa-private-prefs"
 
         const val AUTH_INFO = "auth_info"
+        const val AUTH_PHONE = "auth_phone"
     }
 
     @SuppressLint("CommitPrefEdits")
@@ -32,14 +33,19 @@ class PrefStorageImpl(
         }
     }
 
-    override fun saveAuthInfo(data: SignInResponse) {
+    override fun saveAuthInfo(data: SignInResponse, phone: Long) {
         pref.edit().putString(AUTH_INFO, gson.toJson(data)).apply()
+        pref.edit().putLong(AUTH_PHONE, phone).apply()
     }
 
     override fun getAuthInfo(): SignInResponse? {
         return if (pref.contains(AUTH_INFO))
             gson.fromJson(pref.getString(AUTH_INFO, ""), SignInResponse::class.java)
         else null
+    }
+
+    override fun getAuthPhone(): Long? {
+        return pref.getLong(AUTH_PHONE, -1)
     }
 
     override fun hasAuthInfo(): Completable =
