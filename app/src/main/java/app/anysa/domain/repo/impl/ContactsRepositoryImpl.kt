@@ -64,5 +64,15 @@ class ContactsRepositoryImpl @Inject constructor(
         val encryptedRequestBody = EncryptedRequestBody(modifyUserRequest, method = EncryptedRequestBody.Method.ENCRYPT_MAIN,
                 session = authInfo?.session!!, password = authInfo.password)
         return api.modifyCurrentUser(encryptedRequestBody.encryptKey, encryptedRequestBody.encryptedBody)
+                .flatMap {
+                    if (it.rest == true.toString()) {
+                        val authInfo1 = authStorage.getAuthInfo()
+                        authInfo1?.let { it1 -> //todo
+                            it1.password = passwordmd5
+                            authStorage.saveAuthInfo(it1)
+                        }
+                    }
+                    Single.just(it)
+                }
     }
 }

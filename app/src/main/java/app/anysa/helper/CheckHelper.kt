@@ -25,12 +25,12 @@ class CheckHelper(var context: Context?) {
         return CheckResult(false, password1, context!!.getString(R.string.fragment_change_password_error_passwords_not_match))
     }
 
-    fun isPasswordValid(password: String): CheckResult {
+    fun isPasswordValid(password: String, emptyFieldMessage: String = context!!.getString(R.string.error_field_is_empty)): CheckResult {
 
         val MIN_PASSWORD_LENGTH = 8
 
         if (TextUtils.isEmpty(password)) {
-            return CheckResult(false, password, context!!.getString(R.string.error_field_is_empty))
+            return CheckResult(false, password, emptyFieldMessage)
         }
 
         if (password.length < MIN_PASSWORD_LENGTH) {

@@ -79,5 +79,7 @@
     <string name="fragment_change_password_label_confirm_new_pass">Confirm New Password</string>
     <string name="fragment_change_password_btn_save">Save</string>
     <string name="fragment_change_password_error_passwords_not_match">Passwords doesn`t match</string>
+    <string name="fragment_change_password_error_enter_current">Please enter your current password</string>
+    <string name="fragment_change_password_error_new_pass_empty">New password field is empty</string>
 
 </resources>

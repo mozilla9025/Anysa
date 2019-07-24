@@ -33,8 +33,12 @@ class PrefStorageImpl(
         }
     }
 
-    override fun saveAuthInfo(data: SignInResponse, phone: Long) {
+    override fun saveAuthInfo(data: SignInResponse) {
         pref.edit().putString(AUTH_INFO, gson.toJson(data)).apply()
+    }
+
+    override fun saveAuthInfo(data: SignInResponse, phone: Long) {
+        saveAuthInfo(data)
         pref.edit().putLong(AUTH_PHONE, phone).apply()
     }
 
