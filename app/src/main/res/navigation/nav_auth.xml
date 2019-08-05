@@ -40,7 +40,7 @@
         android:id="@+id/mainFragment"
         android:name="app.anysa.ui.modules.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_splashScreenFragment"
             app:destination="@id/splashScreenFragment" />
@@ -57,7 +57,9 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_registerFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/auth_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -71,6 +73,8 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/auth_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
