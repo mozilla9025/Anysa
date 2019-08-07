@@ -5,6 +5,8 @@ import app.anysa.ui.modules.authorization.register.RegisterFragment
 import app.anysa.ui.modules.authorization.splash.SplashScreenFragment
 import app.anysa.ui.modules.authorization.start.StartFragment
 import app.anysa.ui.modules.main.MainFragment
+import app.anysa.ui.modules.main.chatsnav.ChatsNavFragment
+import app.anysa.ui.modules.main.chatsnav.chats.ChatsFragment
 import app.anysa.ui.modules.main.contactsnav.ContactsNavFragment
 import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactFragment
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsFragment
@@ -56,4 +58,10 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun contributeChangePasswordFragment(): ChangePasswordFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChatsNavFragment(): ChatsNavFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChatsFragment(): ChatsFragment
 }

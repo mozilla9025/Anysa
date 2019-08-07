@@ -11,8 +11,6 @@ class EventModule {
 
     @Provides
     @Singleton
-    fun provideAppLifecycleObserver(
-            context: Context): AppLifecycleObserver
-            = AppLifecycleObserver(context)
+    fun provideAppLifecycleObserver(context: Context): AppLifecycleObserver = AppLifecycleObserver(context)
 
 }

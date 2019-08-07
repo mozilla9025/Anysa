@@ -1,77 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data />
+    <data/>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       android:layout_width="match_parent"
+                                                       android:background="@color/white"
+                                                       android:layout_height="match_parent">
 
         <app.anysa.ui.widget.ToolbarView
-            android:id="@+id/toolbarView"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tv_action_left_icon="@drawable/ic_arrowback"
-            app:tv_action_left_tint="@color/black"
-            app:tv_text="@string/fragment_add_new_contact_title" />
+                android:id="@+id/toolbarView"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tv_action_left_icon="@drawable/ic_arrowback"
+                app:tv_action_left_tint="@color/black"
+                app:tv_text="@string/fragment_add_new_contact_title"/>
 
         <app.anysa.ui.widget.SearchView
-            android:id="@+id/search_view"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp45"
-            android:layout_marginTop="@dimen/dp4"
-            android:layout_marginEnd="@dimen/dp45"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbarView"
-            app:sv_hint="@string/fragment_add_contact_search_hint"
-            app:sv_isPhone="true" />
+                android:id="@+id/search_view"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp45"
+                android:layout_marginTop="@dimen/dp4"
+                android:layout_marginEnd="@dimen/dp45"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarView"
+                app:sv_hint="@string/fragment_add_contact_search_hint"
+                app:sv_isPhone="true"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_search_contact"
-            style="@style/AppTheme.GradientedLoginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp86"
-            android:layout_marginTop="@dimen/dp18"
-            android:layout_marginEnd="@dimen/dp86"
-            android:paddingStart="@dimen/dp48"
-            android:paddingEnd="@dimen/dp48"
-            android:text="@string/fragment_add_contact_button_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view" />
+                android:id="@+id/btn_search_contact"
+                style="@style/AppTheme.GradientedLoginButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp86"
+                android:layout_marginTop="@dimen/dp18"
+                android:layout_marginEnd="@dimen/dp86"
+                android:paddingStart="@dimen/dp48"
+                android:paddingEnd="@dimen/dp48"
+                android:text="@string/fragment_add_contact_button_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_view"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_message"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp20"
-            android:layout_marginTop="@dimen/dp18"
-            android:layout_marginEnd="@dimen/dp20"
-            android:text="@string/fragment_add_contact_found_message"
-            android:textColor="@color/textColorDark"
-            android:textSize="@dimen/sp16"
-            android:visibility="gone"
-            app:fontFamily="@font/helvetica_neue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view" />
+                android:id="@+id/tv_message"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp18"
+                android:layout_marginEnd="@dimen/dp20"
+                android:text="@string/fragment_add_contact_found_message"
+                android:textColor="@color/textColorDark"
+                android:textSize="@dimen/sp16"
+                android:visibility="gone"
+                app:fontFamily="@font/helvetica_neue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_view"/>
 
         <include
-            layout="@layout/item_contact"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp18"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_message" />
+                layout="@layout/item_contact"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_message"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,6 +6,8 @@ import app.anysa.ui.modules.MainActivityViewModel
 import app.anysa.ui.modules.authorization.AuthSharedViewModel
 import app.anysa.ui.modules.authorization.start.StartViewModel
 import app.anysa.ui.modules.main.MainViewModel
+import app.anysa.ui.modules.main.chatsnav.ChatsNavViewModel
+import app.anysa.ui.modules.main.chatsnav.chats.ChatsViewModel
 import app.anysa.ui.modules.main.contactsnav.ContactsNavViewModel
 import app.anysa.ui.modules.main.contactsnav.add_contact.AddContactViewModel
 import app.anysa.ui.modules.main.contactsnav.contacts.ContactsViewModel
@@ -79,9 +81,20 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EditProfileViewModel::class)
     internal abstract fun bindEditProfileViewModel(viewModel: EditProfileViewModel): ViewModel
+
     @Binds
     @IntoMap
     @ViewModelKey(ChangePasswordViewModel::class)
     internal abstract fun bindChangePasswordViewModel(viewModel: ChangePasswordViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChatsNavViewModel::class)
+    internal abstract fun bindChatsNavViewModel(viewModel: ChatsNavViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChatsViewModel::class)
+    internal abstract fun bindChatsViewModel(viewModel: ChatsViewModel): ViewModel
 
 }
