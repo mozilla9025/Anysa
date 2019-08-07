@@ -35,4 +35,10 @@ open class CurrentUser(@PrimaryKey
     override fun hashCode(): Int {
         return id
     }
+
+    companion object {
+        fun empty(): CurrentUser {
+            return CurrentUser(-1)
+        }
+    }
 }

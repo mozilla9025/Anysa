@@ -56,7 +56,7 @@ class PrefStorageImpl(
     override fun getUserRaw(): CurrentUser? {
         return if (pref.contains(KEY_CURRENT_USER))
             gson.fromJson(pref.getString(KEY_CURRENT_USER, ""), CurrentUser::class.java)
-        else null
+        else CurrentUser.empty()
     }
 
     override fun getInfoChangesStamp(): Single<InfoChangesStamp> {
