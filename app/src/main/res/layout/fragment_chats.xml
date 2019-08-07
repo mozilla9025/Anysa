@@ -1,55 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
 
-	<data/>
+    <data/>
 
-	<androidx.coordinatorlayout.widget.CoordinatorLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="match_parent"
-		android:background="@color/white"
-		android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
 
-		<com.google.android.material.appbar.AppBarLayout
-			android:layout_width="match_parent"
-			android:layout_height="">
+        <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="wrap_content">
 
-			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:layout_height="wrap_content">
 
-				<ImageButton
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
-					android:layout_width="@dimen/dp32"
-					android:id="@+id/ibScan"
-					android:background="?attr/selectableItemBackgroundBorderless"
-					android:src="@drawable/ic_scan_qr"
-					android:layout_height="@dimen/dp32"/>
+                <ImageButton
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="@dimen/dp32"
+                        android:id="@+id/ibScan"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_scan_qr"
+                        android:layout_height="@dimen/dp32"/>
 
-				<app.anysa.ui.widget.SearchView
-					android:id="@+id/searchView"
-					android:layout_width="@dimen/dp0"
-					app:layout_constraintStart_toEndOf="@id/ibScan"
-					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintEnd_toStartOf="@id/ibNewMessage"
-					app:layout_constraintBottom_toBottomOf="parent"
-					android:layout_height="wrap_content"/>
+                <app.anysa.ui.widget.SearchView
+                        android:id="@+id/searchView"
+                        android:layout_marginTop="@dimen/dp16"
+                        android:layout_marginBottom="@dimen/dp16"
+                        android:layout_width="@dimen/dp0"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginEnd="@dimen/dp12"
+                        app:layout_constraintStart_toEndOf="@id/ibScan"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ibNewMessage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_height="wrap_content"
+                        app:sv_hint="@string/fragment_chats_search_hint"
+                        app:sv_isPhone="false"/>
 
-				<ImageButton
-					android:id="@+id/ibNewMessage"
-					android:layout_width="@dimen/dp32"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toEndOf="@id/searchView"
-					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintBottom_toBottomOf="parent"
-					android:background="?attr/selectableItemBackgroundBorderless"
-					android:src="@drawable/ic_new_message_mobile"
-					android:layout_height="@dimen/dp32"/>
-			</androidx.constraintlayout.widget.ConstraintLayout>
-		</com.google.android.material.appbar.AppBarLayout>
+                <ImageButton
+                        android:id="@+id/ibNewMessage"
+                        android:layout_width="@dimen/dp32"
+                        android:layout_marginEnd="@dimen/dp20"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/searchView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_new_message_mobile"
+                        android:layout_height="@dimen/dp32"/>
 
+                <View
+                        android:layout_width="@dimen/dp0"
+                        android:layout_height="@dimen/dp1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <app.anysa.ui.widget.DetachableRecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/rvChats"
+                android:overScrollMode="never"
+                android:scrollbars="vertical"
+                tools:listItem="@layout/item_chat"
+                android:scrollbarSize="@dimen/dp4"
+                tools:itemCount="12"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbarThumbVertical="@color/transparentGrey"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:layout_height="match_parent"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

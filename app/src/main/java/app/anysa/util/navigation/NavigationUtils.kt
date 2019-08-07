@@ -63,7 +63,7 @@ object NavigationUtils {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_dialogsFragment -> {
-                    false
+                    onNavDestinationSelected(R.id.chatsNavFragment, navController)
                 }
                 R.id.menu_groupFragment -> {
                     false

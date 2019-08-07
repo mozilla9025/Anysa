@@ -5,4 +5,5 @@
     <string name="start_fragment_label_language">cnLanguage</string>
     <string name="application_language_english">cnEnglish</string>
     <string name="application_language_russian">cnChinees</string>
+    <string name="fragment_chats_search_hint">Search</string>
 </resources>
