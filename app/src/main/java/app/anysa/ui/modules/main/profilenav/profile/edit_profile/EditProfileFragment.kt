@@ -20,7 +20,7 @@ class EditProfileFragment : AbsFragment<EditProfileViewModel, FragmentEditProfil
         super.onBound(binding)
 
         arguments?.let {
-            binding?.user = EditProfileFragmentArgs.fromBundle(it).currentUser
+            binding?.user = EditProfileFragmentArgs.fromBundle(it).user
         }
 
         observe()
@@ -55,7 +55,7 @@ class EditProfileFragment : AbsFragment<EditProfileViewModel, FragmentEditProfil
             if (isError) return
 
 
-            getViewModel()?.updateUserInfo(nameValid.formattedValue, emailValid.formattedValue, bioValid.formattedValue)
+            getViewModel()?.updateUserInfo(nameValid.formattedValue, bioValid.formattedValue, emailValid.formattedValue)
         }
     }
 

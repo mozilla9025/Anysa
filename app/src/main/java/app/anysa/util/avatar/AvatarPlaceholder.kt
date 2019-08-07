@@ -15,16 +15,19 @@ object AvatarPlaceholder {
 
         val s1: String
         var s2 = ""
-        s1 = fullname[0].toString()
-        try {
-            if (fullname.replaceExtraSpaces().contains(" ")) {
-                s2 = fullname[fullname.indexOf(" ") + 1].toString()
-            } else {
-                s2 = fullname[1].toString()
+        var text = profileId.toString()[profileId.toString().length - 1].toString()
+        if (fullname.length > 1) {
+            s1 = fullname[0].toString()
+            try {
+                if (fullname.replaceExtraSpaces().contains(" ")) {
+                    s2 = fullname[fullname.indexOf(" ") + 1].toString()
+                } else {
+                    s2 = fullname[1].toString()
+                }
+            } catch (ignored: Exception) {
             }
-        } catch (ignored: Exception) {
+            text = "$s1$s2"
         }
-
         return TextDrawable.builder()
                 .beginConfig()
                 .width(500)
@@ -35,6 +38,6 @@ object AvatarPlaceholder {
                 .bold()
                 .toUpperCase()
                 .endConfig()
-                .buildRect(s1 + s2, Color.parseColor("#f8f8f8"))
+                .buildRect(text, Color.parseColor("#f8f8f8"))
     }
 }

@@ -1,7 +1,9 @@
 package app.anysa.di
 
+import app.anysa.domain.repo.AnysaRepository
 import app.anysa.domain.repo.AuthRepository
 import app.anysa.domain.repo.ContactsRepository
+import app.anysa.domain.repo.impl.AnysaRepositoryImpl
 import app.anysa.domain.repo.impl.AuthRepositoryImpl
 import app.anysa.domain.repo.impl.ContactsRepositoryImpl
 import dagger.Binds
@@ -15,5 +17,8 @@ interface RepositoryModule {
 
     @Binds
     fun bindContactsRepository(repository: ContactsRepositoryImpl): ContactsRepository
+
+    @Binds
+    fun bindAnysaRepository(repository: AnysaRepositoryImpl): AnysaRepository
 
 }

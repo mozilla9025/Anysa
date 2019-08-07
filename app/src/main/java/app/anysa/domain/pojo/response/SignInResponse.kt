@@ -11,5 +11,5 @@ data class SignInResponse(@SerializedName("user_type") val userType: String,
                           @SerializedName("session") val session: String,
                           @SerializedName("user_code") val userCode: String,
                           @SerializedName("password") var password: String,
-                          @SerializedName("id") val id: String
+                          @SerializedName("id") val id: Long
 ) : Parcelable

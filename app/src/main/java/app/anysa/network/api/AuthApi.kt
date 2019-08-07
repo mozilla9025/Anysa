@@ -1,14 +1,14 @@
 package app.anysa.network.api
 
 import app.anysa.domain.pojo.BaseResponse
-import app.anysa.domain.pojo.request.SignInRequest
+import app.anysa.domain.pojo.response.CheckInfoChangesResponse
 import app.anysa.domain.pojo.response.SignInResponse
-import app.anysa.domain.pojo.response.SignUpResponse
-import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.ResponseBody
-import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 
 interface AuthApi {
@@ -23,4 +23,9 @@ interface AuthApi {
     @FormUrlEncoded
     fun login(@Field("p") encryptedKey: String, @Field("c") encryptedBody: String):
             Single<BaseResponse<SignInResponse>>
+
+    @POST("/checkinfo_change/")
+    @FormUrlEncoded
+    fun checkInfoChanges(@Field("p") encryptedKey: String, @Field("c") encryptedBody: String):
+            Single<BaseResponse<CheckInfoChangesResponse>>
 }

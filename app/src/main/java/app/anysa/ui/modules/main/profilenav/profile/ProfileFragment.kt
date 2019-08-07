@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import app.anysa.R
 import app.anysa.databinding.FragmentProfileBinding
 import app.anysa.domain.pojo.ApiResponse
-import app.anysa.domain.pojo.User
+import app.anysa.domain.pojo.CurrentUser
 import app.anysa.ui.base.abs.AbsFragment
 import app.anysa.ui.modules.MainActivity
 import app.anysa.util.annotation.RequiresView
@@ -26,7 +26,7 @@ class ProfileFragment : AbsFragment<ProfileViewModel, FragmentProfileBinding>() 
     }
 
     private fun observe() {
-        getViewModel()?.currentUserResponse?.reObserve(this, currentUserObserver)
+        getViewModel()?.currentUserResponse?.reObserve(this, userObserver)
 
         getViewModel()?.logoutData?.reObserve(this, Observer {
             when (it.status) {
@@ -56,7 +56,7 @@ class ProfileFragment : AbsFragment<ProfileViewModel, FragmentProfileBinding>() 
         }
     }
 
-    private val currentUserObserver: Observer<ApiResponse<User>> = Observer { t ->
+    private val userObserver: Observer<ApiResponse<CurrentUser>> = Observer { t ->
         when (t?.status) {
             ApiResponse.Status.SUCCESS -> {
                 binding?.user = t.data

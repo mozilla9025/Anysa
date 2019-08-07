@@ -4,9 +4,10 @@ import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import app.anysa.R
+import app.anysa.domain.pojo.CurrentUser
 import app.anysa.domain.pojo.User
 import app.anysa.ui.widget.SettingsEditText
+import app.anysa.util.avatar.AvatarPlaceholder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -17,17 +18,37 @@ object BindingAdapters {
     @BindingAdapter("imageUrl")
     fun setImageViewSrc(imageView: ImageView, user: User?) {
         user?.let {
-//            val placeholder = AvatarPlaceholder.build(user.id.toLong(),
-//                    user.username.let { user.username } ?: "##")
+            val placeholder = AvatarPlaceholder.build(user.id.toLong(),
+                    user.username.let { user.username } ?: "##")
 
-            Glide.with(imageView.context).load(it.avatarUrl)
+            Glide.with(imageView.context)
+                    .load(it.avatarUrl)
                     .apply(RequestOptions()
                             .centerCrop()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .override(500, 500)
-                            .placeholder(R.drawable.ic_no_avatar)
-                            .error(R.drawable.ic_no_avatar))
-                    .into(imageView)
+                            .placeholder(placeholder)
+                            .error(placeholder))
+                            .into(imageView)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("imageUrl")
+    fun setImageViewSrc(imageView: ImageView, user: CurrentUser?) {
+        user?.let {
+                        val placeholder = AvatarPlaceholder.build(user.id.toLong(),
+                    user.nickname.let { user.nickname } ?: "##")
+
+            Glide.with(imageView.context)
+                    .load(it.avatarUrl)
+                    .apply(RequestOptions()
+                            .centerCrop()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .override(500, 500)
+                            .placeholder(placeholder)
+                            .error(placeholder))
+                            .into(imageView)
         }
     }
 

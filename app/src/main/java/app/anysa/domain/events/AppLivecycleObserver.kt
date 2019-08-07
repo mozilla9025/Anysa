@@ -22,7 +22,7 @@ class AppLifecycleObserver constructor(
 //        tasksToDispose.add(
 //                Flowable.combineLatest(
 //                        sharedPrefObserver.createObservableForKey(PrefStorageImpl.TOKEN, ""),
-//                        sharedPrefObserver.createObservableForKey(PrefStorageImpl.KEY_USER, "").map { userStorage.getUserRaw() },
+//                        sharedPrefObserver.createObservableForKey(PrefStorageImpl.KEY_CURRENT_USER, "").map { userStorage.getUserRaw() },
 //                        BiFunction<String, User, Boolean> { t1, t2 -> !t1.isEmpty() && !t2.isEmpty() })
 //                        .doOnNext {
 //                            Timber.e("Token is like that: $it")

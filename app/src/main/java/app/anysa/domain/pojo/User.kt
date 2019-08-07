@@ -10,9 +10,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = ContactDao.TABLE_NAME)
 open class User(@PrimaryKey
-                @SerializedName("id")
+                @SerializedName("user_id")
                 var id: Int = 0,
-                @SerializedName("username")
+                @SerializedName("nick_name")
                 var username: String? = "",
                 @SerializedName("instruction")
                 var description: String? = "",
@@ -23,15 +23,6 @@ open class User(@PrimaryKey
                 @SerializedName("head_image")
                 var avatarUrl: String? = ""
 ) : Parcelable {
-
-
-    companion object {
-        fun empty(): User {
-            return User(EMPTY_USER_ID)
-        }
-
-        const val EMPTY_USER_ID = -1
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

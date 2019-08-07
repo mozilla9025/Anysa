@@ -1,9 +1,11 @@
 package app.anysa.di
 
 import app.anysa.domain.usecase.AuthUseCase
-import app.anysa.domain.usecase.ContactsUseCase
+import app.anysa.domain.usecase.CheckInfoChangesUseCase
+import app.anysa.domain.usecase.CurrentUserUseCase
 import app.anysa.domain.usecase.impl.AuthUseCaseImpl
-import app.anysa.domain.usecase.impl.ContactsUseCaseImpl
+import app.anysa.domain.usecase.impl.CheckInfoChangesUseCaseImpl
+import app.anysa.domain.usecase.impl.CurrentUserUseCaseImpl
 import dagger.Binds
 import dagger.Module
 
@@ -14,6 +16,9 @@ interface UseCaseModule {
     fun bindAuthUseCase(useCase: AuthUseCaseImpl): AuthUseCase
 
     @Binds
-    fun bindContactsUseCase(useCase: ContactsUseCaseImpl): ContactsUseCase
+    fun bindContactsUseCase(useCase: CurrentUserUseCaseImpl): CurrentUserUseCase
+
+    @Binds
+    fun bindCheckInfoChangesUseCase(useCase: CheckInfoChangesUseCaseImpl): CheckInfoChangesUseCase
 
 }

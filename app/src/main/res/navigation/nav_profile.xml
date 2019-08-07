@@ -38,8 +38,8 @@
         android:name="app.anysa.ui.modules.main.profilenav.profile.edit_profile.EditProfileFragment"
         android:label="EditProfileFragment">
         <argument
-            android:name="currentUser"
-            app:argType="app.anysa.domain.pojo.User"
+            android:name="user"
+            app:argType="app.anysa.domain.pojo.CurrentUser"
             app:nullable="false" />
     </fragment>
 

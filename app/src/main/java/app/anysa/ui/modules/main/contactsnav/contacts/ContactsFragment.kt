@@ -12,7 +12,7 @@ import app.anysa.util.annotation.RequiresViewModel
 import app.anysa.util.app_bar.AppBarStateChangeListener
 import app.anysa.util.navigation.NavigationUtils
 import com.google.android.material.appbar.AppBarLayout
-import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.fragment_contacts.*
 
 
 @RequiresView(R.layout.fragment_contacts)

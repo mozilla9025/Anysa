@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="app.anysa.domain.pojo.User" />
+            type="app.anysa.domain.pojo.CurrentUser" />
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -124,7 +124,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/helvetica_neue_bold"
                     android:maxLines="1"
-                    android:text="@{user.username}"
+                    android:text="@{user.nickname}"
                     android:textColor="@color/textColorDark"
                     android:textSize="@dimen/sp24"
                     app:layout_constraintEnd_toStartOf="@id/ib_generate_qr"

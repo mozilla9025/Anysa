@@ -39,7 +39,7 @@ class ContactsRepositoryImpl @Inject constructor(
         val authInfo = authStorage.getAuthInfo()
         var currentUserId = -1L
         runCatching {
-            currentUserId = authInfo?.id?.toLong()!!
+            currentUserId = authInfo?.id!!
         }
 
         val modifyUserRequest = ModifyUserRequest(currentUserId, password = "", telephone = "",
@@ -54,7 +54,7 @@ class ContactsRepositoryImpl @Inject constructor(
         val authInfo = authStorage.getAuthInfo()
         var currentUserId = -1L
         runCatching {
-            currentUserId = authInfo?.id?.toLong()!!
+            currentUserId = authInfo?.id!!
         }
         logd("asdfasfsadfsdf ${authInfo?.password}")
 

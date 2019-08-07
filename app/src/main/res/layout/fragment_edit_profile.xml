@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="app.anysa.domain.pojo.User" />
+            type="app.anysa.domain.pojo.CurrentUser" />
     </data>
 
 
@@ -52,7 +52,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:set_hint="@string/edit_profile_hint_full_name"
-                    app:set_text="@{user.username}"
+                    app:set_text="@{user.nickname}"
                     app:set_title="@string/edit_profile_label_full_name" />
 
                 <app.anysa.ui.widget.SettingsEditText
